@@ -8,6 +8,6 @@ Session.vim
 .netrwhist
 *~
 # vim plugins
-.vim/bundle
-
+.vim/bundle/*
+!.vim/bundle/vundle
 
