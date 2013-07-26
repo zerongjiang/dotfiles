@@ -17,8 +17,8 @@ set wildmenu
 set incsearch
 syntax on
 set hlsearch
-set ignorecase
-set smartcase
+"set ignorecase
+"set smartcase
 
 " mouse
 set mouse=a
@@ -67,33 +67,36 @@ call vundle#rc()
 " let Vundle manage Vundle
 Bundle 'gmarik/vundle'
 
+" File System
 Bundle 'L9'
 Bundle 'FuzzyFinder'
 Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/nerdtree'
 
+" Fast Moving
 Bundle 'Lokaltog/vim-easymotion'
-Bundle 'tsaleh/vim-matchit'
 
-Bundle 'Shougo/neocomplcache'
+" Code Completion
+" Bundle 'Shougo/neocomplcache'
 Bundle 'Raimondi/delimitMate'
 Bundle 'mattn/zencoding-vim'
 Bundle 'tpope/vim-surround'
 Bundle 'scrooloose/nerdcommenter'
 
-Bundle 'sjl/gundo.vim'
-Bundle 'godlygeek/tabular'
-
-Bundle 'nathanaelkane/vim-indent-guides'
+" todo
+" Bundle 'tsaleh/vim-matchit'
+" Bundle 'sjl/gundo.vim'
+" Bundle 'godlygeek/tabular'
+" Bundle 'nathanaelkane/vim-indent-guides'
 
 " snippet engines
-"Bundle 'msanders/snipmate.vim'
+" Bundle 'msanders/snipmate.vim'
 Bundle 'garbas/vim-snipmate'
 
-"Bundle 'ervandew/supertab'
+" Bundle 'ervandew/supertab'
 
 " snippets
-"Bundle 'scrooloose/snipmate-snippets'
+" Bundle 'scrooloose/snipmate-snippets'
 Bundle 'honza/vim-snippets'
 
 "--grabas/vim-snipmate dependecies--
@@ -113,7 +116,15 @@ Bundle 'fisadev/fisa-vim-colorscheme'
 
 filetype plugin indent on
 
-color vividchalk
+color delek
+set background=dark
+
+"-------------
+" Key Mapping
+"-------------
+
+" basic
+nnoremap ; :
 
 " navigation between split windows
 nnoremap <c-j> <c-w>j
@@ -122,5 +133,28 @@ nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
 let g:EasyMotion_leader_key = '<Leader>'
-let g:neocomplcache_enable_at_startup = 1
+
+" NERDTree
+let NERDTreeShowBookmarks=1
 nnoremap <leader>nt :NERDTreeToggle<cr>
+
+" nerdcommenter
+let NERDSpaceDelims=1
+let NERDCompactSexyComs=1
+
+" neocomplcache
+let g:neocomplcache_enable_at_startup=1
+let g:neoComplcache_disableautocomplete=0
+let g:neocomplcache_enable_smart_case=1
+let g:neocomplcache_min_syntax_length=3
+let g:neocomplcache_lock_buffer_name_pattern='\*ku\*'
+
+let g:SuperTabDefaultCompletionType='<C-X><C-U>'
+
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType c setlocal omnifunc=ccomplete#Complete
+
