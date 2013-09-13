@@ -3,7 +3,9 @@
 "---------
 set nocompatible
 set fileencodings=utf-8,gbk,cp936,ucs-bom,latin1
-set backup
+set encoding=utf-8
+set nobackup
+set noswapfile
 set history=1024
 
 set title
@@ -15,16 +17,12 @@ set wildmenu
 
 " search
 set incsearch
-syntax on
 set hlsearch
-"set ignorecase
-"set smartcase
+set ignorecase
+set smartcase
 
 " mouse
 set mouse=a
-
-"let mapleader=","
-"let g:mapleader=","
 
 "---------
 " Editing 
@@ -53,8 +51,8 @@ autocmd BufReadPost *
 
 " diff current buffer and original file
 if !exists(":DiffOrig")
-    command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
-            \ | wincmd p | diffthis
+  command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
+        \ | wincmd p | diffthis
 endif
 
 "---------
@@ -77,31 +75,51 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'Lokaltog/vim-easymotion'
 
 " Code Completion
-" Bundle 'Shougo/neocomplcache'
+Bundle 'Valloric/YouCompleteMe'
 Bundle 'Raimondi/delimitMate'
-Bundle 'mattn/zencoding-vim'
+Bundle 'mattn/emmet-vim'
 Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-repeat'
+
+" Comment
+Bundle 'tpope/vim-commentary'
 Bundle 'scrooloose/nerdcommenter'
 
-" todo
-" Bundle 'tsaleh/vim-matchit'
-" Bundle 'sjl/gundo.vim'
-" Bundle 'godlygeek/tabular'
-" Bundle 'nathanaelkane/vim-indent-guides'
 
-" snippet engines
+" Cutting-edge Snips
+Bundle  'SirVer/ultisnips'
+
+" Todo
+Bundle 'tsaleh/vim-matchit'
+Bundle 'sjl/gundo.vim'
+Bundle 'godlygeek/tabular'
+Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'mileszs/ack.vim'
+Bundle 'tpope/vim-fugitive'
+Bundle 'airblade/vim-gitgutter'
+Bundle 'majutsushi/tagbar'
+
+Bundle 'Lokaltog/vim-powerline'
+
+"------------
+" Deprecated
+"------------
+
+" Acient Snips
 " Bundle 'msanders/snipmate.vim'
-Bundle 'garbas/vim-snipmate'
+" Bundle 'scrooloose/snipmate-snippets'
+
+" Antiquated Snips
+" Bundle 'garbas/vim-snipmate'
+" Snippets
+" Bundle 'honza/vim-snippets'
+
+" grabas/vim-snipmate dependecies
+" Bundle 'MarcWeber/vim-addon-mw-utils'
+" Bundle 'tomtom/tlib_vim'
 
 " Bundle 'ervandew/supertab'
-
-" snippets
-" Bundle 'scrooloose/snipmate-snippets'
-Bundle 'honza/vim-snippets'
-
-"--grabas/vim-snipmate dependecies--
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'tomtom/tlib_vim'
+" Bundle 'Shougo/neocomplcache'
 
 "---------------
 " Color Schemes
@@ -113,10 +131,12 @@ Bundle 'tpope/vim-vividchalk'
 Bundle 'Lokaltog/vim-distinguished'
 Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'fisadev/fisa-vim-colorscheme'
+Bundle 'chriskempson/base16-vim'
 
 filetype plugin indent on
+syntax on
 
-color delek
+color vividchalk
 set background=dark
 
 "-------------
@@ -124,7 +144,9 @@ set background=dark
 "-------------
 
 " basic
+" let mapleader=","
 nnoremap ; :
+imap jj <Esc>
 
 " navigation between split windows
 nnoremap <c-j> <c-w>j
@@ -132,24 +154,53 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
+map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo '.vimrc reloaded'"<CR>
+
+" Ack
+nnoremap <leader>a :Ack 
+" let g:user_emmet_leader_key = '<c-y>'
+
+" EasyMotion
 let g:EasyMotion_leader_key = '<Leader>'
+let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyz'
 
 " NERDTree
 let NERDTreeShowBookmarks=1
-nnoremap <leader>nt :NERDTreeToggle<cr>
+let NERDTreeShowHidden=1
+nnoremap <leader>d :NERDTreeToggle<cr>
 
 " nerdcommenter
 let NERDSpaceDelims=1
 let NERDCompactSexyComs=1
 
 " neocomplcache
-let g:neocomplcache_enable_at_startup=1
-let g:neoComplcache_disableautocomplete=0
-let g:neocomplcache_enable_smart_case=1
-let g:neocomplcache_min_syntax_length=3
-let g:neocomplcache_lock_buffer_name_pattern='\*ku\*'
+" let g:neocomplcache_enable_at_startup=1
+" let g:neoComplcache_disable_auto_complete=0
+" let g:neocomplcache_enable_smart_case=1
+" let g:neocomplcache_min_syntax_length=3
+" let g:neocomplcache_lock_buffer_name_pattern='\*ku\*'
+" let g:SuperTabDefaultCompletionType='<C-X><C-U>'
 
-let g:SuperTabDefaultCompletionType='<C-X><C-U>'
+" YouCompleteMe
+let g:ycm_collect_identifiers_from_tags_files = 1
+
+" ultisnips
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+
+
+" let g:Powerline_symbols = 'fancy'
+let g:Powerline_symbols_override = {
+            \ 'BRANCH': [0x2213],
+            \ 'LINE': 'L',
+            \ }
+let g:Powerline_mode_n = 'N'
+let g:Powerline_mode_i = 'I'
+let g:Powerline_mode_R = 'R'
+let g:Powerline_mode_v = 'V'
+let g:Powerline_mode_V = 'V⋅L'
+let g:Powerline_mode_cv = 'V⋅B'
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -157,4 +208,4 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType c setlocal omnifunc=ccomplete#Complete
-
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP

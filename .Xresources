@@ -1,30 +1,78 @@
-! Defaults
-*background:             #262729
-*foreground:             #f8f8f2
-! Black
-*color0:                 #262729
-*color8:                 #554444
-! Red
-*color1:                 #f92671
-*color9:                 #ff669d
-! Green
-*color2:                 #a6e22e
-*color10:                #beed5f
-! Yellow
-*color3:                 #fd971f
-*color11:                #e6db74
-! Blue
-*color4:                 #34bdef
-*color12:                #66d9ef
-! Magenta
-*color5:                 #9e6ffe
-*color13:                #df92f6
-! Cyan
-*color6:                 #5e7175
-*color14:                #a3babf
-! White
-*color7:                 #ccccc6
-*color15:                #f8f8f2
-! Cursor
-*cursorColor:            #b5d2dd
-*cursorBlink:            true
+!
+! ~/.Xresouces
+! Author: Zerong Jiang
+!
+
+! color palette
+#include ".Xcolors/jhvid"
+
+*saveLines: 65535
+*cursorBlink: true
+
+! XTerm {{{
+
+XTerm.termName: xterm-256color
+XTerm.scrollBar: false
+XTerm.rightScrollBar: true
+
+! Colorful Man Page
+*VT100.colorBDMode:     true
+*VT100.colorBD:         #a6e22e
+*VT100.colorULMode:     true
+*VT100.colorUL:         #ae81ff
+*VT100.veryBoldColors:  6
+
+! font
+XTerm*faceName:xft:Terminus:antialias=True:pixelsize=12
+! XTerm*faceName:xft:Bitstream Vera Serif Mono:antialias=True:pixelsize=12
+! XTerm*faceNameDoublesize:xft:WenQuanYi Micro Hei Mono:antialias=True:pixelsize=12
+
+! }}} XTerm
+
+! URxvt {{{
+
+URxvt.scrollstyle: plain
+URxvt.scrollBar_right: true
+URxvt.scrollBar_floating: true
+URxvt.scrollColor: #a6e22e
+
+! Colorful Man Page
+URxvt.colorIT:      #a6e22e
+URxvt.colorBD:      #a6e22e
+URxvt.colorUL:      #ae81ff
+
+! font
+URxvt.font:xft:Terminus:antialias=True:pixelsize=12
+! URxvt.font:xft:Bitstream Vera Sans Mono:antialias=True:pixelsize=12,xft:WenQuanYi Micro Hei Mono:antialias=True:pixelsize=12
+! URxvt.boldfont:xft:Bitstream Vera Sans Mono:antialias=True:pixelsize=12:Bold,xft:WenQuanYi Micro Hei Mono:antialias=True:pixelsize=12:Bold
+
+! True transparency
+! URxvt.depth: 32
+! URxvt.background: [80]#353333
+
+! Native transparency
+! URxvt.transparent: true
+! ! URxvt.shading: 0 to 99 darkens, 101 to 200 lightens
+! URxvt.shading: 50
+
+! Clickable URL
+URxvt.perl-ext-common: default,matcher
+URxvt.url-launcher: google-chrome
+URxvt.matcher.button:   1
+
+! URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
+
+! URxvt.url-select.launcher:  google-chrome
+! URxvt.url-select.underline: true
+! URvxt.url-select.button:    2
+! URxvt.keysym.M-u:           perl:url-select:select_next
+
+! URxvt.keysym.M-Escape:      perl:keyboard-select:activate
+! URxvt.keysym.M-s:           perl:keyboard-select:search
+
+! URxvt.keysym.M-c:           perl:clipboard:copy
+! URxvt.keysym.M-v:           perl:clipboard:paste
+! URxvt.keysym.M-C-v:         perl:clipboard:paste_escaped
+! URxvt.clipboard.autocopy:   true
+
+! }}} URxvt

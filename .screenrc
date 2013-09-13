@@ -1,0 +1,41 @@
+# ===============================================================
+# ESCAPE - the COMMAND CHARACTER
+# ===============================================================
+escape ^aa
+# escape ``
+# escape ^zz
+
+# =============================
+# Display in right way
+# =============================
+defutf8 on
+utf8 on on
+term screen-256color
+
+
+# =============================
+# Options
+# =============================
+# nethack         on
+startup_message off
+vbell           off
+
+# ===============================================================
+# STARTUP of programs in an extra window:
+# ===============================================================
+# screen -t bash      0 bash
+# screen -t vim       11 vim
+# screen -t htop      12 htop
+
+# # sorendition kG # black  on bold green
+
+caption always "%{=b dw}:%{-b dw}:%{=b dk}[ %{-b dw}%{-b dg}$USER%{-b dw}@%{-b dg}%H %{=b dk}] [ %= %?%{-b dg}%-Lw%?%{+b dk}(%{+b dw}%n:%t%{+b dk})%?(%u)%?%{-b dw}%?%{-b dg}%+Lw%? %{=b dk}]%{-b dw}:%{+b dw}:"
+
+# caption always "[ $user@%h ] [ %= %?%-lw%?(%n:%t)%?(%u)%?%?%+Lw%? ]"
+
+# backtick 2 5 5 $HOME/scripts/meminfo
+hardstatus off
+hardstatus alwayslastline
+hardstatus string "%{+b dw}:%{-b dw}:%{+b dk}[%{-b dg} %0C:%s%a %{=b dk}]-[ %{-b dw}Load%{+b dk}:%{-b dg}%l %{+b dk}] [%{-b dg}%2`%{+b dk}] %=[ %{-b dg}%1`%{=b dk} ]%{-b dw}:%{+b dw}:%<"
+
+# hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %m-%d %{W} %c %{g}]'
