@@ -167,6 +167,8 @@ let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyz'
 " NERDTree
 let NERDTreeShowBookmarks=1
 let NERDTreeShowHidden=1
+let NERDTreeDirArrows=0
+let NERDChristmasTree=1
 nnoremap <leader>d :NERDTreeToggle<cr>
 
 " nerdcommenter
@@ -192,7 +194,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 " let g:Powerline_symbols = 'fancy'
 let g:Powerline_symbols_override = {
-            \ 'BRANCH': [0x2213],
+            \ 'BRANCH': '±',
             \ 'LINE': 'L',
             \ }
 let g:Powerline_mode_n = 'N'

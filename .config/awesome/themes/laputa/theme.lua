@@ -8,26 +8,26 @@
 
 -- {{{ Main
 theme = {}
-theme.wallpaper = "/usr/share/awesome/themes/zenburn/zenburn-background.png"
+theme.wallpaper = "~/.wallpaper.jpg"
 -- }}}
 
 -- {{{ Styles
-theme.font      = "sans 8"
+theme.font      = "Terminus 8"
 
 -- {{{ Colors
 theme.fg_normal  = "#DCDCCC"
-theme.fg_focus   = "#F0DFAF"
+theme.fg_focus   = "#262729"
 theme.fg_urgent  = "#CC9393"
 theme.bg_normal  = "#3F3F3F"
-theme.bg_focus   = "#1E2320"
+theme.bg_focus   = "#A6E22E"
 theme.bg_urgent  = "#3F3F3F"
 theme.bg_systray = theme.bg_normal
 -- }}}
 
 -- {{{ Borders
-theme.border_width  = 2
+theme.border_width  = 1
 theme.border_normal = "#3F3F3F"
-theme.border_focus  = "#6F6F6F"
+theme.border_focus  = "#A6E22E"
 theme.border_marked = "#CC9393"
 -- }}}
 

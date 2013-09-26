@@ -4,16 +4,17 @@
 !
 
 ! color palette
-#include ".Xcolors/jhvid"
+#include "./.Xcolors/jhvid"
 
-*saveLines: 65535
-*cursorBlink: true
+*saveLines:    65535
+*cursorBlink:  true
+*cursorColor:  #a6e22e
 
 ! XTerm {{{
 
-XTerm.termName: xterm-256color
-XTerm.scrollBar: false
-XTerm.rightScrollBar: true
+XTerm.termName:        xterm-256color
+XTerm.scrollBar:       false
+XTerm.rightScrollBar:  true
 
 ! Colorful Man Page
 *VT100.colorBDMode:     true
@@ -23,18 +24,24 @@ XTerm.rightScrollBar: true
 *VT100.veryBoldColors:  6
 
 ! font
-XTerm*faceName:xft:Terminus:antialias=True:pixelsize=12
-! XTerm*faceName:xft:Bitstream Vera Serif Mono:antialias=True:pixelsize=12
-! XTerm*faceNameDoublesize:xft:WenQuanYi Micro Hei Mono:antialias=True:pixelsize=12
+XTerm*faceName:            xft:Terminus:antialias=True:pixelsize=12
+! XTerm*faceNameDoublesize:  xft:Heiti SC:antialias=True:pixelsize=12
+
+! XTerm*faceName:            xft:DejaVu Sans Mono:antialias=True:pixelsize=12
+XTerm*faceNameDoublesize:  xft:WenQuanYi Bitmap Song:antialias=True:pixelsize=12
+! XTerm*faceNameDoublesize:  xft:WenQuanYi Micro Hei Mono:antialias=True:pixelsize=12
+! XTerm*faceNameDoublesize:  xft:WenQuanYi Zen Hei Mono:antialias=True:pixelsize=12
+! XTerm*faceNameDoublesize:  xft:Microsoft Yahei:antialias=True:pixelsize=11
 
 ! }}} XTerm
 
 ! URxvt {{{
 
-URxvt.scrollstyle: plain
-URxvt.scrollBar_right: true
-URxvt.scrollBar_floating: true
-URxvt.scrollColor: #a6e22e
+URxvt.scrollColor:         #a6e22e
+URxvt.scrollstyle:         plain
+URxvt.scrollBar_right:     true
+URxvt.scrollBar_floating:  true
+URvxt.skipBuiltinGlyphs:   true
 
 ! Colorful Man Page
 URxvt.colorIT:      #a6e22e
@@ -42,22 +49,28 @@ URxvt.colorBD:      #a6e22e
 URxvt.colorUL:      #ae81ff
 
 ! font
-URxvt.font:xft:Terminus:antialias=True:pixelsize=12
-! URxvt.font:xft:Bitstream Vera Sans Mono:antialias=True:pixelsize=12,xft:WenQuanYi Micro Hei Mono:antialias=True:pixelsize=12
-! URxvt.boldfont:xft:Bitstream Vera Sans Mono:antialias=True:pixelsize=12:Bold,xft:WenQuanYi Micro Hei Mono:antialias=True:pixelsize=12:Bold
+URxvt.font:              xft:Terminus:antialias=True:pixelsize=12, \
+                         xft:WenQuanYi Micro Hei Mono:antialias=True:pixelsize=12
+! URxvt.font:            xft:DejaVu Sans Mono:antialias=True:pixelsize=12, \
+!                        xft:WenQuanYi Micro Hei Mono:antialias=True:pixelsize=12
+! URxvt.boldFont:        xft:DejaVu Sans Mono:antialias=True:pixelsize=12:Bold, \
+!                        xft:WenQuanYi Micro Hei Mono:antialias=True:pixelsize=12:Bold
+! URxvt*italicFont:      font
+! URxvt*boldItalicFont:  font
+! URxvt.letterSpace:     -1
 
 ! True transparency
-! URxvt.depth: 32
-! URxvt.background: [80]#353333
+! URxvt.depth:       32
+! URxvt.background:  [80]#353333
 
 ! Native transparency
-! URxvt.transparent: true
-! ! URxvt.shading: 0 to 99 darkens, 101 to 200 lightens
-! URxvt.shading: 50
+! URxvt.transparent:  true
+! URxvt.shading:      0 to 99 darkens, 101 to 200 lightens
+! URxvt.shading:      50
 
 ! Clickable URL
-URxvt.perl-ext-common: default,matcher
-URxvt.url-launcher: google-chrome
+URxvt.perl-ext-common:  default,matcher
+URxvt.url-launcher:     google-chrome
 URxvt.matcher.button:   1
 
 ! URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
