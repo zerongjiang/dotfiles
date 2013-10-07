@@ -1,8 +1,8 @@
 -- Standard awesome library
-local gears = require("gears")
-local awful = require("awful")
+awful = require("awful")
 awful.rules = require("awful.rules")
 require("awful.autofocus")
+local gears = require("gears")
 -- Widget and layout library
 local wibox = require("wibox")
 local vicious = require("vicious")
@@ -11,6 +11,7 @@ local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
 local menubar = require("menubar")
+local hal = require("hal")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -40,12 +41,12 @@ end
 
 -- theme path
 home = os.getenv("HOME")
-confdir = home .. "/.config/awesome"
-themedir = confdir .. "/themes/laputa"
+confdir = awful.util.getdir("config")
+theme = confdir .. "/themes/laputa"
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
-beautiful.init(themedir.."/theme.lua")
+beautiful.init(theme .. "/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "xterm"
@@ -65,12 +66,12 @@ local layouts =
 {
     awful.layout.suit.floating,           --1
     awful.layout.suit.tile,               --2
-    awful.layout.suit.tile.left,          --3
+    -- awful.layout.suit.tile.left,          --3
     awful.layout.suit.tile.bottom,        --4
-    awful.layout.suit.tile.top,           --5
+    -- awful.layout.suit.tile.top,           --5
     awful.layout.suit.fair,               --6
-    awful.layout.suit.fair.horizontal,    --7
-    awful.layout.suit.spiral,             --8
+    -- awful.layout.suit.fair.horizontal,    --7
+    -- awful.layout.suit.spiral,             --8
     awful.layout.suit.spiral.dwindle,     --9
     awful.layout.suit.max,                --10
     awful.layout.suit.max.fullscreen,     --11
@@ -90,7 +91,7 @@ end
 -- Define a tag table which hold all screen tags.
 tags = {
   names  = {"Term",     "Code",       "Www",     "Misc"    },
-  layout = {layouts[2], layouts[10], layouts[1], layouts[1]}
+  layout = {layouts[2], layouts[6], layouts[1], layouts[1]}
 }
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
@@ -121,7 +122,7 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 
 
 --[[ mywibox
-|m|------Tags--------|---------------------Task List--------------------------|Tray|-------Widgets------|Layout|
+|m|------Tags--------|---------------------Task List--------------------------|Tray|---------Widgets--------|Layout|
 ┌─┬────┬────┬───┬────┬────────────────────────────────────────────────────────┬────┬───┬───┬───┬───┬───┬────┬──────┐
 │A│Term│Code│Www│Misc│                                                        │Tray│CPU│Mem│Net│Tem│Vol│Date│Layout│
 └─┴────┴────┴───┴────┴────────────────────────────────────────────────────────┴────┴───┴───┴───┴───┴───┴────┴──────┘
@@ -129,24 +130,25 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
   
 
 -- {{{ Wibox
--- Create a textclock widget
-mytextclock = awful.widget.textclock()
+-- textclock widget
+clockwidget = wibox.widget.textbox()
+vicious.register(clockwidget, vicious.widgets.date, "%b %d %R", 60)
 
 -- cpu widget
 cpuwidget = wibox.widget.textbox()
-vicious.register(cpuwidget, vicious.widgets.cpu, '<span color="#add8e6">☯</span>$1% ', 5)
+vicious.register(cpuwidget, vicious.widgets.cpu, '<span color="#add8e6">☯</span>$1% ', 2)
 
 -- memory widget
 memwidget = wibox.widget.textbox()
-vicious.register(memwidget, vicious.widgets.mem, '<span color="#90ee90">░</span>$1% ', 5)
+vicious.register(memwidget, vicious.widgets.mem, '<span color="#90ee90">░</span>$1% ', 2)
 
 -- net widget
 netwidget = wibox.widget.textbox()
-vicious.register(netwidget, vicious.widgets.net, '<span color="#5798d9">⇩</span>${wlan0 down_kb}<span color="#c2ba62">⇧</span>${wlan0 up_kb} ' , 5)
+vicious.register(netwidget, vicious.widgets.net, '<span color="#5798d9">⇩</span>${'..hal.net..' down_kb}<span color="#c2ba62">⇧</span>${'..hal.net..' up_kb} ' , 2)
 
 -- thermal widget
 thermwidget = wibox.widget.textbox()
-vicious.register(thermwidget, vicious.widgets.thermal, '☀$1° ', 30, "thermal_zone0")
+vicious.register(thermwidget, vicious.widgets.thermal, '☀$1° ', 10, "thermal_zone0")
 
 -- Volume widget
 volume = {
@@ -166,11 +168,11 @@ volume = {
 }
 vicious.register(volume.widget, vicious.widgets.volume, function (widget, args)
   if (args[2] ~= "♩" ) then
-     return '♬' .. args[1] .. '%'
+     return '♬' .. args[1] .. '% '
   else
-     return '♬<span color="red">M</span>'
+     return '♬<span color="red">M</span> '
   end
-end, 5, "Master")
+end, 10, "Master")
 volume.widget:buttons(awful.util.table.join(
   awful.button({ }, 4, volume.up),
   awful.button({ }, 5, volume.down),
@@ -259,7 +261,7 @@ for s = 1, screen.count() do
     right_layout:add(netwidget)
     right_layout:add(thermwidget)
     right_layout:add(volume.widget)
-    right_layout:add(mytextclock)
+    right_layout:add(clockwidget)
     right_layout:add(mylayoutbox[s])
 
     -- Now bring it all together (with the tasklist in the middle)
@@ -296,7 +298,7 @@ globalkeys = awful.util.table.join(
             awful.client.focus.byidx(-1)
             if client.focus then client.focus:raise() end
         end),
-    awful.key({ modkey,           }, "w", function () mymainmenu:show() end),
+    awful.key({ modkey,           }, "w", function () mymainmenu:toggle() end),
 
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end),
@@ -340,7 +342,12 @@ globalkeys = awful.util.table.join(
                   awful.util.getdir("cache") .. "/history_eval")
               end),
     -- Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end)
+    awful.key({ modkey }, "p", function() menubar.show() end),
+
+    -- Fn Keys (xev get keyname)
+    awful.key({ }, "XF86AudioRaiseVolume", function () volume.up()    end),
+    awful.key({ }, "XF86AudioLowerVolume", function () volume.down()  end),
+    awful.key({ }, "XF86AudioMute",        function () volume.mute()  end)
 )
 
 clientkeys = awful.util.table.join(
