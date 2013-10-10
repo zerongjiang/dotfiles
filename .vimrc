@@ -1,32 +1,35 @@
 "---------
-" General 
+" General
 "---------
 set nocompatible
 set fileencodings=utf-8,gbk,cp936,ucs-bom,latin1
 set encoding=utf-8
-set nobackup
-set noswapfile
+set backup
+set writebackup
+set swapfile
 set history=1024
 
 set title
-set number
-set ruler
+set number                  " show line numbers
+set ruler                   " show the line and column number of the cursor position
 set showcmd
-set laststatus=2
-set wildmenu
+set laststatus=2            " always show status line
+set wildmenu                " show tab completion on status line
 
 " search
-set incsearch
-set hlsearch
-set ignorecase
-set smartcase
+set incsearch               " search as you type
+set hlsearch                " highlight search
+set ignorecase              " case-insensitive search
+set smartcase               " case-sensitive if any caps
 
 " mouse
-set mouse=a
+set mouse=a                 " enable mouse support"
 
 "---------
-" Editing 
+" Editing
 "---------
+set list
+set listchars=tab:▸\ ,trail:▫,precedes:«,extends:»
 set backspace=indent,eol,start
 set whichwrap+=<,>,h,l
 
@@ -56,7 +59,7 @@ if !exists(":DiffOrig")
 endif
 
 "---------
-" Plugins 
+" Plugins
 "---------
 filetype off
 set rtp+=~/.vim/bundle/vundle/
