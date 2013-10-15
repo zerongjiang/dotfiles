@@ -4,26 +4,29 @@
 set nocompatible
 set fileencodings=utf-8,gbk,cp936,ucs-bom,latin1
 set encoding=utf-8
-set backup
-set writebackup
-set swapfile
+set nobackup
+set nowritebackup
+set noswapfile
 set history=1024
 
+" Appearance
 set title
 set number                  " show line numbers
 set ruler                   " show the line and column number of the cursor position
 set showcmd
+set scrolloff=3
 set laststatus=2            " always show status line
 set wildmenu                " show tab completion on status line
+set cursorline cursorcolumn " cursor position cross
 
-" search
+" Search
 set incsearch               " search as you type
 set hlsearch                " highlight search
 set ignorecase              " case-insensitive search
 set smartcase               " case-sensitive if any caps
 
-" mouse
-set mouse=a                 " enable mouse support"
+" Mouse
+set mouse=a                 " enable mouse support
 
 "---------
 " Editing
@@ -33,13 +36,13 @@ set listchars=tab:▸\ ,trail:▫,precedes:«,extends:»
 set backspace=indent,eol,start
 set whichwrap+=<,>,h,l
 
-" indent
-set expandtab
-set autoindent
-set smartindent
-"set smarttab
+" Indent
+set expandtab     " expand tab to space
+set autoindent    " copy indent from last line
+set smartindent   " adjust indent after {, cinwords, }
+" set smarttab
 set tabstop=4
-set softtabstop=4
+set softtabstop=4 " mix tab and space
 set shiftwidth=4
 
 autocmd FileType php setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
@@ -135,12 +138,13 @@ Bundle 'Lokaltog/vim-distinguished'
 Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'fisadev/fisa-vim-colorscheme'
 Bundle 'chriskempson/base16-vim'
+Bundle 'vim-scripts/xoria256.vim'
 
 filetype plugin indent on
 syntax on
 
-color vividchalk
 set background=dark
+color xoria256
 
 "-------------
 " Key Mapping
@@ -160,7 +164,7 @@ nnoremap <c-l> <c-w>l
 map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo '.vimrc reloaded'"<CR>
 
 " Ack
-nnoremap <leader>a :Ack 
+nnoremap <leader>a :Ack<space>
 " let g:user_emmet_leader_key = '<c-y>'
 
 " EasyMotion
@@ -177,6 +181,26 @@ nnoremap <leader>d :NERDTreeToggle<cr>
 " nerdcommenter
 let NERDSpaceDelims=1
 let NERDCompactSexyComs=1
+
+" GitGutter
+let g:gitgutter_enabled = 0
+nmap <leader>g :GitGutterToggle<CR>
+
+" Tagbar
+nmap <leader>] :TagbarToggle<CR>
+
+" ctrlp
+let g:ctrlp_match_window = 'order:ttb,max:20'
+" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
+if executable('ag')
+  let g:ackprg = 'ag --nogroup --column'
+
+  " Use Ag over Grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
 
 " neocomplcache
 " let g:neocomplcache_enable_at_startup=1

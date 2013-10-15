@@ -9,6 +9,7 @@
 *saveLines:    65535
 *cursorBlink:  true
 *cursorColor:  #a6e22e
+*preeditType:  Root
 
 ! XTerm {{{
 
@@ -24,14 +25,13 @@ XTerm.rightScrollBar:  true
 *VT100.veryBoldColors:  6
 
 ! font
-XTerm*faceName:            xft:Terminus:antialias=True:pixelsize=12
-! XTerm*faceNameDoublesize:  xft:Heiti SC:antialias=True:pixelsize=12
-
+XTerm*faceName:            xft:Terminus:pixelsize=12
+XTerm*faceNameDoublesize:  xft:WenQuanYi Bitmap Song:pixelsize=8
 ! XTerm*faceName:            xft:DejaVu Sans Mono:antialias=True:pixelsize=12
-XTerm*faceNameDoublesize:  xft:WenQuanYi Bitmap Song:antialias=True:pixelsize=12
 ! XTerm*faceNameDoublesize:  xft:WenQuanYi Micro Hei Mono:antialias=True:pixelsize=12
 ! XTerm*faceNameDoublesize:  xft:WenQuanYi Zen Hei Mono:antialias=True:pixelsize=12
 ! XTerm*faceNameDoublesize:  xft:Microsoft Yahei:antialias=True:pixelsize=11
+! XTerm*faceNameDoublesize:  xft:Heiti SC:antialias=True:pixelsize=12
 
 ! }}} XTerm
 
@@ -49,12 +49,10 @@ URxvt.colorBD:      #a6e22e
 URxvt.colorUL:      #ae81ff
 
 ! font
-URxvt.font:              xft:Terminus:antialias=True:pixelsize=12, \
-                         xft:WenQuanYi Micro Hei Mono:antialias=True:pixelsize=12
-! URxvt.font:            xft:DejaVu Sans Mono:antialias=True:pixelsize=12, \
+URxvt.font:              xft:Terminus-8,\
+                         xft:WenQuanYi Bitmap Song-8
+! URxvt.font:            xft:DejaVu Sans Mono:antialias=True:pixelsize=12,\
 !                        xft:WenQuanYi Micro Hei Mono:antialias=True:pixelsize=12
-! URxvt.boldFont:        xft:DejaVu Sans Mono:antialias=True:pixelsize=12:Bold, \
-!                        xft:WenQuanYi Micro Hei Mono:antialias=True:pixelsize=12:Bold
 ! URxvt*italicFont:      font
 ! URxvt*boldItalicFont:  font
 ! URxvt.letterSpace:     -1

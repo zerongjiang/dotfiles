@@ -49,8 +49,8 @@ theme = confdir .. "/themes/laputa"
 beautiful.init(theme .. "/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "xterm"
-terminal2 = "urxvt"
+terminal = "urxvt"
+terminal2 = "xterm"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
