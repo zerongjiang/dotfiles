@@ -104,8 +104,9 @@ Bundle 'mileszs/ack.vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'majutsushi/tagbar'
-
+Bundle 'scrooloose/syntastic'
 Bundle 'Lokaltog/vim-powerline'
+Bundle 'Shougo/vinarise.vim'
 
 "------------
 " Deprecated
@@ -168,7 +169,7 @@ nnoremap <leader>a :Ack<space>
 " let g:user_emmet_leader_key = '<c-y>'
 
 " EasyMotion
-let g:EasyMotion_leader_key = '<Leader>'
+" let g:EasyMotion_leader_key = '<Leader>'
 let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyz'
 
 " NERDTree
