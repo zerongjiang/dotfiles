@@ -90,7 +90,7 @@ end
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
 tags = {
-  names  = {"Term",     "Code",       "Www",     "Misc"    },
+  names  = {"Term",     "Www",      "Chat",     "Misc"    },
   layout = {layouts[2], layouts[6], layouts[1], layouts[1]}
 }
 for s = 1, screen.count() do
@@ -127,7 +127,7 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 │A│Term│Code│Www│Misc│                                                        │Tray│CPU│Mem│Net│Tem│Vol│Date│Layout│
 └─┴────┴────┴───┴────┴────────────────────────────────────────────────────────┴────┴───┴───┴───┴───┴───┴────┴──────┘
 ]]
-  
+
 
 -- {{{ Wibox
 -- textclock widget
