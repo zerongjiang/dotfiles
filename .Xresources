@@ -16,6 +16,7 @@
 XTerm.termName:        xterm-256color
 XTerm.scrollBar:       false
 XTerm.rightScrollBar:  true
+XTerm.dynamicColors:   true
 
 ! Colorful Man Page
 *VT100.colorBDMode:     true
@@ -37,6 +38,7 @@ XTerm*faceNameDoublesize:  xft:WenQuanYi Bitmap Song:pixelsize=8
 
 ! URxvt {{{
 
+URxvt.scrollBar:           false
 URxvt.scrollColor:         #a6e22e
 URxvt.scrollstyle:         plain
 URxvt.scrollBar_right:     true

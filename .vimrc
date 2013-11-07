@@ -32,7 +32,7 @@ set mouse=a                 " enable mouse support
 " Editing
 "---------
 set list
-set listchars=tab:▸\ ,trail:▫,precedes:«,extends:»
+set listchars=tab:▸\ ,trail:◻,precedes:«,extends:»
 set backspace=indent,eol,start
 set whichwrap+=<,>,h,l
 
