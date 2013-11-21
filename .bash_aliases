@@ -4,6 +4,8 @@
 
 alias ls='ls --color=auto'
 alias ll='ls -al'
+alias lll='ll -i -h --time-style=long-iso'
+
 alias sshfs='sshfs -o Ciphers=arcfour -o cache_stat_timeout=600 -o workaround=nodelaysrv'
 
 #shortcuts

@@ -33,18 +33,28 @@ find_git_branch () {
 }
 
 PS1='\n\[\e[0;36m\]┌─[\[\e[1;35m\]\u\[\e[1;34m\] @ \[\e[1;35m\]\h\[\e[0;36m\]]─[\[\e[1;34m\]\A\[\e[0;36m\]]─[\[\e[1;34m\]\w\[\e[0;36m\]]─[\[\e[0;31m\]\!\[\e[0;36m\]] \[\e[1;34m$(find_git_branch)\]\n\[\e[0;36m\]└─[\[\e[1;37m\]\$\[\e[0;36m\]] \[\e[0m\]'
+# command prompt... HOLY SHIT MAGIC!
+case $TERM in
+    screen*)
+        SCREENTITLE='\[\ek\e\\\]\[\ek\W\e\\\]'
+        ;;
+    *)
+        SCREENTITLE=''
+        ;;
+esac
+PS1="${PS1}${SCREENTITLE}"
 
 ################
 # alias
 ################
 
-source ~/.bash_aliases
+[[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
 
 ################
 # local
 ################
 
-source ~/.bash_local
+[[ -f ~/.bash_local ]] && . ~/.bash_local
 
 ################
 # environment
@@ -68,4 +78,3 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 #nodejs
 # source <(npm completion)
-

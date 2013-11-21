@@ -145,7 +145,7 @@ filetype plugin indent on
 syntax on
 
 set background=dark
-color xoria256
+color vividchalk
 
 "-------------
 " Key Mapping
