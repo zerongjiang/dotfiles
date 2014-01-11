@@ -40,12 +40,13 @@ set whichwrap+=<,>,h,l
 set expandtab     " expand tab to space
 set autoindent    " copy indent from last line
 set smartindent   " adjust indent after {, cinwords, }
-" set smarttab
-set tabstop=4
+" set smarttab    " <BS> delete 4 space
+set tabstop=4     " tab size
 set softtabstop=4 " mix tab and space
-set shiftwidth=4
+set shiftwidth=4  " indent size
 
 autocmd FileType php setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
+autocmd FileType html setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
 
 set wrap
 
@@ -145,7 +146,7 @@ filetype plugin indent on
 syntax on
 
 set background=dark
-color vividchalk
+color torte
 
 "-------------
 " Key Mapping
@@ -213,6 +214,7 @@ endif
 
 " YouCompleteMe
 let g:ycm_collect_identifiers_from_tags_files = 1
+let g:EclimCompletionMethod = 'omnifunc'
 
 " ultisnips
 let g:UltiSnipsExpandTrigger="<c-j>"
