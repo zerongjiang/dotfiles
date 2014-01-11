@@ -20,7 +20,6 @@ alias ebash="vim ~/.bashrc"
 alias ealias="vim ~/.bash_aliases"
 
 #ssh tunnel
-alias sshproxy='ssh -qTfnN -D 8080 root@209.15.232.61 -p 22'
 alias sshtunnel='ssh -qTfnN -D 8080'
 
 #power manage
@@ -58,3 +57,4 @@ extract () {
     echo "'$1' is not a valid file"
   fi
 }
+alias mydo="ssh root@198.199.101.204"

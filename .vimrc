@@ -32,7 +32,7 @@ set mouse=a                 " enable mouse support
 " Editing
 "---------
 set list
-set listchars=tab:▸\ ,trail:◻,precedes:«,extends:»
+set listchars=tab:▸\ ,trail:▫,precedes:«,extends:»
 set backspace=indent,eol,start
 set whichwrap+=<,>,h,l
 
@@ -129,6 +129,10 @@ Bundle 'Shougo/vinarise.vim'
 " Bundle 'ervandew/supertab'
 " Bundle 'Shougo/neocomplcache'
 
+Bundle 'rodjek/vim-puppet'
+" Bundle 'puppetlabs/puppet-syntax-vim'
+" Bundle 'dansomething/vim-eclim'
+
 "---------------
 " Color Schemes
 "---------------
@@ -164,6 +168,7 @@ nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
 map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo '.vimrc reloaded'"<CR>
+command W w !sudo tee % > /dev/null
 
 " Ack
 nnoremap <leader>a :Ack<space>
@@ -193,6 +198,7 @@ nmap <leader>] :TagbarToggle<CR>
 
 " ctrlp
 let g:ctrlp_match_window = 'order:ttb,max:20'
+
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
   let g:ackprg = 'ag --nogroup --column'

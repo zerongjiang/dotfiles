@@ -63,8 +63,8 @@ PS1="${PS1}${SCREENTITLE}"
 export EDITOR="vim"
 
 # Java
-export JAVA_HOME=~/java/jdk1.6.0_45_i586
-# export JAVA_HOME=~/java/jdk1.6.0_45_x64
+# export JAVA_HOME=~/java/jdk1.6.0_45_i586
+export JAVA_HOME=~/java/jdk1.6.0_45_x64
 export PATH=$JAVA_HOME/bin:$PATH
 
 # android
