@@ -108,6 +108,7 @@ Bundle 'majutsushi/tagbar'
 Bundle 'scrooloose/syntastic'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'Shougo/vinarise.vim'
+Bundle 'itchyny/calendar.vim'
 
 "------------
 " Deprecated

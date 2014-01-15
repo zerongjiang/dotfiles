@@ -35,7 +35,7 @@ alias m="git add .; git commit -m"
 alias myip="curl ifconfig.me"
 alias serverthis="python2 -m SimpleHTTPServer"
 
-mkalias () { echo "alias $1=\"$2\"" >> ~/.bash_aliases; }
+mkalias () { echo "alias $1='$2'" >> ~/.bash_aliases; }
 
 extract () {
   if [ -f $1 ] ; then
@@ -58,3 +58,4 @@ extract () {
   fi
 }
 alias mydo="ssh root@198.199.101.204"
+alias grep='grep --color=auto'

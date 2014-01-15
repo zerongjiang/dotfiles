@@ -37,7 +37,10 @@ XTerm*faceNameDoublesize:  xft:WenQuanYi Bitmap Song:pixelsize=8
 ! }}} XTerm
 
 ! URxvt {{{
+! List of all URxvt resources
+! urxvt --help 2>&1| sed -n '/:  /s/^ */! URxvt*/gp'
 
+URxvt.termName:            xterm-256color
 URxvt.scrollBar:           false
 URxvt.scrollColor:         #a6e22e
 URxvt.scrollstyle:         plain
@@ -70,7 +73,7 @@ URxvt.font:              xft:Terminus-8,\
 
 ! Clickable URL
 URxvt.perl-ext-common:  default,matcher
-URxvt.url-launcher:     google-chrome
+URxvt.url-launcher:     chromium
 URxvt.matcher.button:   1
 
 ! URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
