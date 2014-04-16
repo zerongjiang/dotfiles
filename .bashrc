@@ -68,7 +68,7 @@ export JAVA_HOME=~/java/jdk1.6.0_45_x64
 export PATH=$JAVA_HOME/bin:$PATH
 
 # android
-export ANDROID_SDK=~/android-sdk-linux
+export ANDROID_SDK=~/android/sdk
 export PATH=$PATH:$ANDROID_SDK/tools:$ANDROID_SDK/platform-tools
 
 #ruby
