@@ -8,6 +8,7 @@ set nobackup
 set nowritebackup
 set noswapfile
 set history=1024
+set hidden                  " hidden buffer when switching
 
 " Appearance
 set title
@@ -45,7 +46,7 @@ set tabstop=4     " tab size
 set softtabstop=4 " mix tab and space
 set shiftwidth=4  " indent size
 
-autocmd FileType php setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
+" autocmd FileType php setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
 autocmd FileType html setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
 
 set wrap
@@ -73,8 +74,6 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " File System
-Bundle 'L9'
-Bundle 'FuzzyFinder'
 Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/nerdtree'
 
@@ -85,34 +84,59 @@ Bundle 'Lokaltog/vim-easymotion'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'Raimondi/delimitMate'
 Bundle 'mattn/emmet-vim'
-Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-endwise'
+Bundle 'tpope/vim-ragtag'
+Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-unimpaired'
+Bundle 'dansomething/vim-eclim'
 
 " Comment
 Bundle 'tpope/vim-commentary'
 Bundle 'scrooloose/nerdcommenter'
 
-
 " Cutting-edge Snips
 Bundle  'SirVer/ultisnips'
+Bundle 'honza/vim-snippets'
 
-" Todo
-Bundle 'tsaleh/vim-matchit'
-Bundle 'sjl/gundo.vim'
-Bundle 'godlygeek/tabular'
-Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'mileszs/ack.vim'
+" VCS
 Bundle 'tpope/vim-fugitive'
 Bundle 'airblade/vim-gitgutter'
-Bundle 'majutsushi/tagbar'
+" Bundle 'mhinz/vim-signify'
+Bundle 'sjl/gundo.vim'
+
+" UI-enhance
+Bundle 'bling/vim-airline'
+" Bundle 'Lokaltog/vim-powerline'
+
+" Style guide
+Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'godlygeek/tabular'
+" Bundle 'junegunn/vim-easy-align'
 Bundle 'scrooloose/syntastic'
-Bundle 'Lokaltog/vim-powerline'
+
+" Utils
 Bundle 'Shougo/vinarise.vim'
-Bundle 'itchyny/calendar.vim'
+" Bundle 'itchyny/calendar.vim'
+Bundle 'vim-scripts/DrawIt'
+
+" More filetype
+Bundle 'tpope/vim-markdown'
+Bundle 'rodjek/vim-puppet'
+" Bundle 'puppetlabs/puppet-syntax-vim'
+
+" Todo
+Bundle 'vim-scripts/matchit.zip'
+Bundle 'mileszs/ack.vim'
+Bundle 'majutsushi/tagbar'
 
 "------------
 " Deprecated
 "------------
+
+" Bundle 'L9'
+" Bundle 'FuzzyFinder'
 
 " Acient Snips
 " Bundle 'msanders/snipmate.vim'
@@ -130,9 +154,6 @@ Bundle 'itchyny/calendar.vim'
 " Bundle 'ervandew/supertab'
 " Bundle 'Shougo/neocomplcache'
 
-Bundle 'rodjek/vim-puppet'
-" Bundle 'puppetlabs/puppet-syntax-vim'
-" Bundle 'dansomething/vim-eclim'
 
 "---------------
 " Color Schemes
@@ -146,12 +167,14 @@ Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'fisadev/fisa-vim-colorscheme'
 Bundle 'chriskempson/base16-vim'
 Bundle 'vim-scripts/xoria256.vim'
+Bundle 'nanotech/jellybeans.vim'
+Bundle 'tomasr/molokai'
 
 filetype plugin indent on
 syntax on
 
 set background=dark
-color torte
+color molokai
 
 "-------------
 " Key Mapping
@@ -199,6 +222,8 @@ nmap <leader>] :TagbarToggle<CR>
 
 " ctrlp
 let g:ctrlp_match_window = 'order:ttb,max:20'
+let g:ctrlp_show_hidden = 1
+nmap <leader>b :CtrlPBuffer<CR>
 
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
@@ -222,14 +247,26 @@ endif
 " YouCompleteMe
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:EclimCompletionMethod = 'omnifunc'
+" let g:ycm_key_invoke_completion = '<c-l>'
 
 " ultisnips
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
+" syntastic
+let g:syntastic_check_on_open = 1
+let g:syntastic_error_symbol = '✗'
+let g:syntastic_warning_symbol = '⚠'
 
-" let g:Powerline_symbols = 'fancy'
+" indent guides
+let g:indent_guides_auto_colors = 0
+let g:indent_guides_guide_size = 1
+let g:indent_guides_start_level = 2
+hi IndentGuidesOdd  ctermbg=black
+hi IndentGuidesEven ctermbg=darkgrey
+
+" powerline
 let g:Powerline_symbols_override = {
             \ 'BRANCH': '±',
             \ 'LINE': 'L',
@@ -240,6 +277,35 @@ let g:Powerline_mode_R = 'R'
 let g:Powerline_mode_v = 'V'
 let g:Powerline_mode_V = 'V⋅L'
 let g:Powerline_mode_cv = 'V⋅B'
+
+" airline
+let g:airline_mode_map = {
+    \ '__' : '-',
+    \ 'n'  : 'N',
+    \ 'i'  : 'I',
+    \ 'R'  : 'R',
+    \ 'c'  : 'C',
+    \ 'v'  : 'V',
+    \ 'V'  : 'V⋅L',
+    \ '' : 'V⋅B',
+    \ 's'  : 'S',
+    \ 'S'  : 'S',
+    \ '' : 'S',
+    \ }
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = '⋅'
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = '⋅'
+let g:airline_symbols.linenr = 'L'
+let g:airline_symbols.paste = 'P'
+let g:airline_symbols.whitespace = '!'
+let g:airline_symbols.branch = '±'
+let g:airline#extensions#whitespace#trailing_format = '¶[%s]'
+let g:airline#extensions#whitespace#mixed_indent_format = 'Ξ[%s]'
+" let g:airline#extensions#tabline#enabled = 1
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
