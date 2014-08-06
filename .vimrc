@@ -82,23 +82,28 @@ Bundle 'Lokaltog/vim-easymotion'
 
 " Code Completion
 Bundle 'Valloric/YouCompleteMe'
-Bundle 'Raimondi/delimitMate'
+Bundle 'dansomething/vim-eclim'
+
+" Cutting-edge Snips
+" Bundle  'SirVer/ultisnips'
+" Bundle 'honza/vim-snippets'
+
+" Productivity
+Bundle 'godlygeek/tabular'
+" Bundle 'junegunn/vim-easy-align'
 Bundle 'mattn/emmet-vim'
+Bundle 'Raimondi/delimitMate'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-ragtag'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
-Bundle 'dansomething/vim-eclim'
+Bundle 'vim-scripts/matchit.zip'
 
 " Comment
-Bundle 'tpope/vim-commentary'
 Bundle 'scrooloose/nerdcommenter'
-
-" Cutting-edge Snips
-Bundle  'SirVer/ultisnips'
-Bundle 'honza/vim-snippets'
+" Bundle 'tpope/vim-commentary'
 
 " VCS
 Bundle 'tpope/vim-fugitive'
@@ -112,9 +117,14 @@ Bundle 'bling/vim-airline'
 
 " Style guide
 Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'godlygeek/tabular'
-" Bundle 'junegunn/vim-easy-align'
+
+" Syntax
+Bundle 'majutsushi/tagbar'
 Bundle 'scrooloose/syntastic'
+
+" Search
+Bundle 'mileszs/ack.vim'
+" Bundle 'rking/ag.vim'
 
 " Utils
 Bundle 'Shougo/vinarise.vim'
@@ -122,14 +132,9 @@ Bundle 'Shougo/vinarise.vim'
 Bundle 'vim-scripts/DrawIt'
 
 " More filetype
-Bundle 'tpope/vim-markdown'
 Bundle 'rodjek/vim-puppet'
+Bundle 'tpope/vim-markdown'
 " Bundle 'puppetlabs/puppet-syntax-vim'
-
-" Todo
-Bundle 'vim-scripts/matchit.zip'
-Bundle 'mileszs/ack.vim'
-Bundle 'majutsushi/tagbar'
 
 "------------
 " Deprecated
@@ -154,27 +159,28 @@ Bundle 'majutsushi/tagbar'
 " Bundle 'ervandew/supertab'
 " Bundle 'Shougo/neocomplcache'
 
-
 "---------------
 " Color Schemes
 "---------------
-Bundle 'rickharris/vim-blackboard'
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'rickharris/vim-monokai'
-Bundle 'tpope/vim-vividchalk'
-Bundle 'Lokaltog/vim-distinguished'
 Bundle 'chriskempson/vim-tomorrow-theme'
+Bundle 'ciaranm/inkpot'
 Bundle 'fisadev/fisa-vim-colorscheme'
-Bundle 'chriskempson/base16-vim'
-Bundle 'vim-scripts/xoria256.vim'
+Bundle 'junegunn/seoul256.vim'
+Bundle 'Lokaltog/vim-distinguished'
 Bundle 'nanotech/jellybeans.vim'
+Bundle 'rickharris/vim-blackboard'
+Bundle 'rickharris/vim-monokai'
 Bundle 'tomasr/molokai'
+Bundle 'tpope/vim-vividchalk'
+Bundle 'vim-scripts/tir_black'
+Bundle 'vim-scripts/xoria256.vim'
 
 filetype plugin indent on
 syntax on
 
 set background=dark
-color molokai
+colo molokai
 
 "-------------
 " Key Mapping
@@ -192,7 +198,7 @@ nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
 map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo '.vimrc reloaded'"<CR>
-command W w !sudo tee % > /dev/null
+command! W w !sudo tee % > /dev/null
 
 " Ack
 nnoremap <leader>a :Ack<space>
@@ -207,6 +213,7 @@ let NERDTreeShowBookmarks=1
 let NERDTreeShowHidden=1
 let NERDTreeDirArrows=0
 let NERDChristmasTree=1
+let NERDTreeChDirMode=2
 nnoremap <leader>d :NERDTreeToggle<cr>
 
 " nerdcommenter
@@ -237,17 +244,17 @@ if executable('ag')
 endif
 
 " neocomplcache
-" let g:neocomplcache_enable_at_startup=1
-" let g:neoComplcache_disable_auto_complete=0
+let g:neocomplcache_enable_at_startup=1
 " let g:neocomplcache_enable_smart_case=1
 " let g:neocomplcache_min_syntax_length=3
-" let g:neocomplcache_lock_buffer_name_pattern='\*ku\*'
-" let g:SuperTabDefaultCompletionType='<C-X><C-U>'
+let g:neocomplcache_enable_fuzzy_completion = 1
+" inoremap <expr><C-g> neocomplcache#undo_completion()
+" inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " YouCompleteMe
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:EclimCompletionMethod = 'omnifunc'
-" let g:ycm_key_invoke_completion = '<c-l>'
+let g:ycm_key_invoke_completion = '<c-l>'
 
 " ultisnips
 let g:UltiSnipsExpandTrigger="<c-j>"
@@ -263,8 +270,8 @@ let g:syntastic_warning_symbol = '⚠'
 let g:indent_guides_auto_colors = 0
 let g:indent_guides_guide_size = 1
 let g:indent_guides_start_level = 2
-hi IndentGuidesOdd  ctermbg=black
-hi IndentGuidesEven ctermbg=darkgrey
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=235
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=237
 
 " powerline
 let g:Powerline_symbols_override = {
