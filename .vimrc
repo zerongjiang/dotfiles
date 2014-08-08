@@ -67,115 +67,116 @@ endif
 " Plugins
 "---------
 filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/vundle
+call vundle#begin()
 
 " let Vundle manage Vundle
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 
 " File System
-Bundle 'kien/ctrlp.vim'
-Bundle 'scrooloose/nerdtree'
+Plugin 'kien/ctrlp.vim'
+Plugin 'scrooloose/nerdtree'
 
 " Fast Moving
-Bundle 'Lokaltog/vim-easymotion'
+Plugin 'Lokaltog/vim-easymotion'
 
 " Code Completion
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'dansomething/vim-eclim'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'dansomething/vim-eclim'
 
 " Cutting-edge Snips
-" Bundle  'SirVer/ultisnips'
-" Bundle 'honza/vim-snippets'
+" Plugin  'SirVer/ultisnips'
+" Plugin 'honza/vim-snippets'
 
 " Productivity
-Bundle 'godlygeek/tabular'
-" Bundle 'junegunn/vim-easy-align'
-Bundle 'mattn/emmet-vim'
-Bundle 'Raimondi/delimitMate'
-Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-ragtag'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'vim-scripts/matchit.zip'
+Plugin 'godlygeek/tabular'
+" Plugin 'junegunn/vim-easy-align'
+Plugin 'mattn/emmet-vim'
+Plugin 'Raimondi/delimitMate'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-ragtag'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'vim-scripts/matchit.zip'
 
 " Comment
-Bundle 'scrooloose/nerdcommenter'
-" Bundle 'tpope/vim-commentary'
+Plugin 'scrooloose/nerdcommenter'
+" Plugin 'tpope/vim-commentary'
 
 " VCS
-Bundle 'tpope/vim-fugitive'
-Bundle 'airblade/vim-gitgutter'
-" Bundle 'mhinz/vim-signify'
-Bundle 'sjl/gundo.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
+" Plugin 'mhinz/vim-signify'
+Plugin 'sjl/gundo.vim'
 
 " UI-enhance
-Bundle 'bling/vim-airline'
-" Bundle 'Lokaltog/vim-powerline'
+Plugin 'bling/vim-airline'
+" Plugin 'Lokaltog/vim-powerline'
 
 " Style guide
-Bundle 'nathanaelkane/vim-indent-guides'
+Plugin 'nathanaelkane/vim-indent-guides'
 
 " Syntax
-Bundle 'majutsushi/tagbar'
-Bundle 'scrooloose/syntastic'
+Plugin 'majutsushi/tagbar'
+Plugin 'scrooloose/syntastic'
 
 " Search
-Bundle 'mileszs/ack.vim'
-" Bundle 'rking/ag.vim'
+Plugin 'mileszs/ack.vim'
+" Plugin 'rking/ag.vim'
 
 " Utils
-Bundle 'Shougo/vinarise.vim'
-" Bundle 'itchyny/calendar.vim'
-Bundle 'vim-scripts/DrawIt'
+Plugin 'Shougo/vinarise.vim'
+" Plugin 'itchyny/calendar.vim'
+Plugin 'vim-scripts/DrawIt'
 
 " More filetype
-Bundle 'rodjek/vim-puppet'
-Bundle 'tpope/vim-markdown'
-" Bundle 'puppetlabs/puppet-syntax-vim'
+Plugin 'rodjek/vim-puppet'
+Plugin 'tpope/vim-markdown'
+" Plugin 'puppetlabs/puppet-syntax-vim'
 
 "------------
 " Deprecated
 "------------
 
-" Bundle 'L9'
-" Bundle 'FuzzyFinder'
+" Plugin 'L9'
+" Plugin 'FuzzyFinder'
 
 " Acient Snips
-" Bundle 'msanders/snipmate.vim'
-" Bundle 'scrooloose/snipmate-snippets'
+" Plugin 'msanders/snipmate.vim'
+" Plugin 'scrooloose/snipmate-snippets'
 
 " Antiquated Snips
-" Bundle 'garbas/vim-snipmate'
+" Plugin 'garbas/vim-snipmate'
 " Snippets
-" Bundle 'honza/vim-snippets'
+" Plugin 'honza/vim-snippets'
 
 " grabas/vim-snipmate dependecies
-" Bundle 'MarcWeber/vim-addon-mw-utils'
-" Bundle 'tomtom/tlib_vim'
+" Plugin 'MarcWeber/vim-addon-mw-utils'
+" Plugin 'tomtom/tlib_vim'
 
-" Bundle 'ervandew/supertab'
-" Bundle 'Shougo/neocomplcache'
+" Plugin 'ervandew/supertab'
+" Plugin 'Shougo/neocomplcache'
 
 "---------------
 " Color Schemes
 "---------------
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'chriskempson/vim-tomorrow-theme'
-Bundle 'ciaranm/inkpot'
-Bundle 'fisadev/fisa-vim-colorscheme'
-Bundle 'junegunn/seoul256.vim'
-Bundle 'Lokaltog/vim-distinguished'
-Bundle 'nanotech/jellybeans.vim'
-Bundle 'rickharris/vim-blackboard'
-Bundle 'rickharris/vim-monokai'
-Bundle 'tomasr/molokai'
-Bundle 'tpope/vim-vividchalk'
-Bundle 'vim-scripts/tir_black'
-Bundle 'vim-scripts/xoria256.vim'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'chriskempson/vim-tomorrow-theme'
+Plugin 'ciaranm/inkpot'
+Plugin 'fisadev/fisa-vim-colorscheme'
+Plugin 'junegunn/seoul256.vim'
+Plugin 'Lokaltog/vim-distinguished'
+Plugin 'nanotech/jellybeans.vim'
+Plugin 'rickharris/vim-blackboard'
+Plugin 'rickharris/vim-monokai'
+Plugin 'tomasr/molokai'
+Plugin 'tpope/vim-vividchalk'
+Plugin 'vim-scripts/tir_black'
+Plugin 'vim-scripts/xoria256.vim'
 
+call vundle#end()
 filetype plugin indent on
 syntax on
 
