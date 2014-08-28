@@ -81,12 +81,19 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'Lokaltog/vim-easymotion'
 
 " Code Completion
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'dansomething/vim-eclim'
-
-" Cutting-edge Snips
+" Plugin 'Valloric/YouCompleteMe'
 " Plugin  'SirVer/ultisnips'
 " Plugin 'honza/vim-snippets'
+" Plugin 'dansomething/vim-eclim'
+
+Plugin 'Shougo/neocomplcache'
+Plugin 'Shougo/neosnippet'
+Plugin 'Shougo/neosnippet-snippets'
+Plugin 'honza/vim-snippets'
+
+" Plugin 'garbas/vim-snipmate'
+" Plugin 'MarcWeber/vim-addon-mw-utils'
+" Plugin 'tomtom/tlib_vim'
 
 " Productivity
 Plugin 'godlygeek/tabular'
@@ -147,17 +154,7 @@ Plugin 'tpope/vim-markdown'
 " Plugin 'msanders/snipmate.vim'
 " Plugin 'scrooloose/snipmate-snippets'
 
-" Antiquated Snips
-" Plugin 'garbas/vim-snipmate'
-" Snippets
-" Plugin 'honza/vim-snippets'
-
-" grabas/vim-snipmate dependecies
-" Plugin 'MarcWeber/vim-addon-mw-utils'
-" Plugin 'tomtom/tlib_vim'
-
 " Plugin 'ervandew/supertab'
-" Plugin 'Shougo/neocomplcache'
 
 "---------------
 " Color Schemes
@@ -188,7 +185,7 @@ colo molokai
 "-------------
 
 " basic
-" let mapleader=","
+let mapleader=","
 nnoremap ; :
 imap jj <Esc>
 
@@ -245,12 +242,15 @@ if executable('ag')
 endif
 
 " neocomplcache
+let g:acp_enableAtStartup=0
 let g:neocomplcache_enable_at_startup=1
-" let g:neocomplcache_enable_smart_case=1
-" let g:neocomplcache_min_syntax_length=3
+let g:neocomplcache_enable_smart_case=1
 let g:neocomplcache_enable_fuzzy_completion = 1
-" inoremap <expr><C-g> neocomplcache#undo_completion()
-" inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+imap <C-j> <Plug>(neosnippet_expand_or_jump)
+smap <C-j> <Plug>(neosnippet_expand_or_jump)
+
 
 " YouCompleteMe
 let g:ycm_collect_identifiers_from_tags_files = 1
