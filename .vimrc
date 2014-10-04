@@ -82,9 +82,9 @@ Plugin 'Lokaltog/vim-easymotion'
 
 " Code Completion
 " Plugin 'Valloric/YouCompleteMe'
-" Plugin  'SirVer/ultisnips'
+" Plugin 'SirVer/ultisnips'
 " Plugin 'honza/vim-snippets'
-" Plugin 'dansomething/vim-eclim'
+Plugin 'denzeljiang/vim-eclim'
 
 Plugin 'Shougo/neocomplcache'
 Plugin 'Shougo/neosnippet'
@@ -139,6 +139,7 @@ Plugin 'Shougo/vinarise.vim'
 Plugin 'vim-scripts/DrawIt'
 
 " More filetype
+Plugin 'chrisbra/csv.vim'
 Plugin 'rodjek/vim-puppet'
 Plugin 'tpope/vim-markdown'
 " Plugin 'puppetlabs/puppet-syntax-vim'
@@ -245,12 +246,25 @@ endif
 let g:acp_enableAtStartup=0
 let g:neocomplcache_enable_at_startup=1
 let g:neocomplcache_enable_smart_case=1
-let g:neocomplcache_enable_fuzzy_completion = 1
 let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+let g:neocomplcache_auto_completion_start_length=3
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 imap <C-j> <Plug>(neosnippet_expand_or_jump)
 smap <C-j> <Plug>(neosnippet_expand_or_jump)
 
+if !exists('g:neocomplcache_omni_patterns')
+  let g:neocomplcache_omni_patterns = {}
+endif
+
+if !exists('g:neocomplcache_force_omni_patterns')
+  let g:neocomplcache_force_omni_patterns = {}
+endif
+
+let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+let g:neocomplcache_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+let g:neocomplcache_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+let g:neocomplcache_force_omni_patterns.java = '\k\.\k*'
+let g:neocomplcache_omni_patterns.java = '\k\.\k*'
 
 " YouCompleteMe
 let g:ycm_collect_identifiers_from_tags_files = 1
