@@ -55,6 +55,7 @@ URxvt.colorUL:      #ae81ff
 
 ! font
 URxvt.font:              xft:Terminus-8,\
+                         xft:Terminus (TTF):antialias=True:pixelsize=12,\
                          xft:WenQuanYi Bitmap Song-8
 ! URxvt.font:            xft:DejaVu Sans Mono:antialias=True:pixelsize=12,\
 !                        xft:WenQuanYi Micro Hei Mono:antialias=True:pixelsize=12

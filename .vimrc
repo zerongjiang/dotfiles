@@ -48,6 +48,7 @@ set shiftwidth=4  " indent size
 
 " autocmd FileType php setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
 autocmd FileType html setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
+autocmd FileType yaml setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
 
 set wrap
 
@@ -278,6 +279,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 " syntastic
 let g:syntastic_check_on_open = 1
+let g:syntastic_enable_signs = 1
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '⚠'
 
@@ -301,6 +303,9 @@ let g:Powerline_mode_V = 'V⋅L'
 let g:Powerline_mode_cv = 'V⋅B'
 
 " airline
+let g:airline#extensions#syntastic#enabled = 0
+let g:airline#extensions#tagbar#enabled = 0
+" let g:airline#extensions#tabline#enabled = 1
 let g:airline_mode_map = {
     \ '__' : '-',
     \ 'n'  : 'N',
@@ -317,17 +322,27 @@ let g:airline_mode_map = {
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = '⋅'
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = '⋅'
-let g:airline_symbols.linenr = 'L'
-let g:airline_symbols.paste = 'P'
-let g:airline_symbols.whitespace = '!'
-let g:airline_symbols.branch = '±'
-let g:airline#extensions#whitespace#trailing_format = '¶[%s]'
-let g:airline#extensions#whitespace#mixed_indent_format = 'Ξ[%s]'
-" let g:airline#extensions#tabline#enabled = 1
+
+" let g:airline_left_sep = ''
+let g:airline_left_sep = ''
+" let g:airline_right_sep = ''
+let g:airline_right_sep = ''
+" let g:airline_left_alt_sep = '⋅'
+let g:airline_left_alt_sep = ''
+" let g:airline_right_alt_sep = '⋅'
+let g:airline_right_alt_sep = ''
+" let g:airline_symbols.linenr = 'L'
+let g:airline_symbols.linenr = ''
+" let g:airline_symbols.paste = 'P'
+let g:airline_symbols.paste = 'Þ'
+" let g:airline_symbols.branch = '±'
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+" let g:airline_symbols.whitespace = '¶'
+let g:airline_symbols.whitespace = 'Ξ'
+
+let g:airline#extensions#whitespace#trailing_format = '▫[%s]'
+let g:airline#extensions#whitespace#mixed_indent_format = '▸[%s]'
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
