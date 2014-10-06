@@ -125,6 +125,7 @@ Plugin 'bling/vim-airline'
 
 " Style guide
 Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'bronson/vim-trailing-whitespace'
 
 " Syntax
