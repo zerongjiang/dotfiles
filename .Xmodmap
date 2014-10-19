@@ -1,0 +1,17 @@
+! Caps => Ctrl
+remove Lock = Caps_Lock
+keysym Caps_Lock = Control_L
+add Control = Control_L
+
+! Chromebook
+! Mod4 => Ctrl
+! Ctrl => Alt, Alt => Mod4
+! remove Mod4 = Super_L
+! remove Control = Control_L
+! remove Mod1 = Alt_L
+! keysym Super_L = Control_L
+! keysym Control_L = Alt_L
+! keysym Alt_L = Super_L
+! add Mod1 = Alt_L
+! add Control = Control_L
+! add Mod4 = Super_L

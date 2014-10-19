@@ -1,9 +1,15 @@
-#
+#!/bin/bash
 # ~/.bashrc
-#
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
+
+################
+# 256color
+################
+if [[ $TERM != *-256color ]]; then
+    export TERM=xterm-256color
+fi
 
 ################
 # PS1
@@ -33,6 +39,7 @@ find_git_branch () {
 }
 
 PS1='\n\[\e[0;36m\]┌─[\[\e[1;35m\]\u\[\e[1;34m\] @ \[\e[1;35m\]\h\[\e[0;36m\]]─[\[\e[1;34m\]\A\[\e[0;36m\]]─[\[\e[1;34m\]\w\[\e[0;36m\]]─[\[\e[0;31m\]\!\[\e[0;36m\]] \[\e[1;34m$(find_git_branch)\]\n\[\e[0;36m\]└─[\[\e[1;37m\]\$\[\e[0;36m\]] \[\e[0m\]'
+
 # command prompt... HOLY SHIT MAGIC!
 case $TERM in
     screen*)
@@ -63,18 +70,23 @@ PS1="${PS1}${SCREENTITLE}"
 export EDITOR="vim"
 
 # Java
-# export JAVA_HOME=~/java/jdk1.6.0_45_i586
-export JAVA_HOME=~/java/jdk1.6.0_45_x64
-export PATH=$JAVA_HOME/bin:$PATH
+if [[ -f ~/opt/java ]]; then
+    export JAVA_HOME=~/opt/java
+    export PATH=$JAVA_HOME/bin:$PATH
+fi
 
 # android
-export ANDROID_SDK=~/android/sdk
-export PATH=$PATH:$ANDROID_SDK/tools:$ANDROID_SDK/platform-tools
+if [[ -f ~/opt/android/sdk ]]; then
+    export ANDROID_SDK=~/opt/android/sdk
+    export PATH=$PATH:$ANDROID_SDK/tools:$ANDROID_SDK/platform-tools
+fi
 
 #ruby
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-# source ~/.rvm/scripts/rvm
-# export PATH=$PATH:$(ruby -rubygems -e "puts Gem.user_dir")/bin
+if [[ -f $HOME/.rvm/bin ]]; then
+    PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+    # source ~/.rvm/scripts/rvm
+    # export PATH=$PATH:$(ruby -rubygems -e "puts Gem.user_dir")/bin
+fi
 
 #nodejs
 # source <(npm completion)
