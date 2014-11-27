@@ -9,7 +9,8 @@
 -- {{{ Main
 theme = {}
 theme.dir = awful.util.getdir("config") .. "/themes/laputa"
-theme.wallpaper = "~/.wallpaper.jpg"
+theme.wallpaper = os.getenv("HOME") .. "/.wallpaper.jpg"
+theme.wallpaper_cmd = { "awsetbg " .. theme.wallpaper }
 -- }}}
 
 -- {{{ Styles
