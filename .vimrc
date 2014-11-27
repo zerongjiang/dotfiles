@@ -202,8 +202,18 @@ nnoremap <c-l> <c-w>l
 map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo '.vimrc reloaded'"<CR>
 command! W w !sudo tee % > /dev/null
 
+if executable('ag')
+  " Use Ag over Grep
+  set grepprg=ag\ --nogroup\ --nocolor
+endif
+
 " Ack
 nnoremap <leader>a :Ack<space>
+if executable('ag')
+  let g:ackprg = 'ag --nogroup --nocolor --column'
+endif
+
+" Emmet
 " let g:user_emmet_leader_key = '<c-y>'
 
 " EasyMotion
@@ -233,14 +243,7 @@ nmap <leader>] :TagbarToggle<CR>
 let g:ctrlp_match_window = 'order:ttb,max:20'
 let g:ctrlp_show_hidden = 1
 nmap <leader>b :CtrlPBuffer<CR>
-
-" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
-  let g:ackprg = 'ag --nogroup --nocolor --column'
-
-  " Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor
-
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g "" --hidden'
 endif

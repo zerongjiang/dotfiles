@@ -70,20 +70,20 @@ PS1="${PS1}${SCREENTITLE}"
 export EDITOR="vim"
 
 # Java
-if [[ -f ~/opt/java ]]; then
+if [[ -d ~/opt/java ]]; then
     export JAVA_HOME=~/opt/java
     export PATH=$JAVA_HOME/bin:$PATH
 fi
 
 # android
-if [[ -f ~/opt/android/sdk ]]; then
+if [[ -d ~/opt/android/sdk ]]; then
     export ANDROID_SDK=~/opt/android/sdk
     export PATH=$PATH:$ANDROID_SDK/tools:$ANDROID_SDK/platform-tools
 fi
 
 #ruby
-if [[ -f $HOME/.rvm/bin ]]; then
-    PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+if [[ -d $HOME/.rvm/bin ]]; then
+    export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
     # source ~/.rvm/scripts/rvm
     # export PATH=$PATH:$(ruby -rubygems -e "puts Gem.user_dir")/bin
 fi

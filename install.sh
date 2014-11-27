@@ -5,7 +5,7 @@ linkdot()
     source="$HOME/dotfiles/$1"
     target="$HOME/$1"
 
-    if [ -e $target ]; then
+    if [ -h $target ]; then
         if [ $target -ef $source ]; then
             echo "$1 Linked"
             return
@@ -20,7 +20,7 @@ linkdot()
 }
 
 # bash
-if [ -e $HOME/.bashrc ]; then
+if [ ! -h $HOME/.bashrc ]; then
     echo '.bashrc sourcing'
     line='[[ -f ~/dotfiles/.bashrc ]] && . ~/dotfiles/.bashrc'
     if ! grep -Fxq "$line" $HOME/.bashrc; then
