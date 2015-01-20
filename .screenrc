@@ -31,7 +31,7 @@ termcapinfo xterm*|urxvt* ti@:te@
 caption always "%{= kw}%-Lw%{=b rw}%50>[%n* %t]%{= kw}%+Lw%<"
 
 backtick 1 0 0 whoami
-backtick 2 5 5 $HOME/dotfiles/bin/memory.sh
+backtick 2 5 5 $HOME/dotfiles/lib/screen/sh/memory.sh
 
 hardstatus off
 hardstatus alwayslastline
