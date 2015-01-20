@@ -11,8 +11,8 @@ fi
 # X11 settings
 ##############
 xset -b
-xrandr --output LVDS1 --auto --primary --output VGA1 --auto --right-of LVDS1
-setxkbmap -option ctrl:nocaps
+# xrandr --output LVDS1 --auto --primary --output VGA1 --auto --right-of LVDS1
+# setxkbmap -option ctrl:nocaps
 [ -f ~/.Xmodmap ] && xmodmap ~/.Xmodmap
 
 ################
@@ -23,19 +23,19 @@ setxkbmap -option ctrl:nocaps
 ################
 # input method
 ################
-# export XMODIFIERS=@im=ibus
-# export GTK_IM_MODULE=ibus
-# export QT_IM_MODULE=ibus
-# ibus-daemon -rxd
-export XMODIFIERS="@im=fcitx"
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
-fcitx &
+export XMODIFIERS=@im=ibus
+export GTK_IM_MODULE=ibus
+export QT_IM_MODULE=ibus
+ibus-daemon -rxd
+# export XMODIFIERS="@im=fcitx"
+# export GTK_IM_MODULE=fcitx
+# export QT_IM_MODULE=fcitx
+# fcitx &
 
 ################
 # applications
 ################
-dropbox &
+# dropboxd &
 # conky &
 
 wmname LG3D
