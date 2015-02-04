@@ -74,9 +74,12 @@ call vundle#begin()
 " let Vundle manage Vundle
 Plugin 'gmarik/vundle'
 
-" File System
-Plugin 'kien/ctrlp.vim'
+" Files, Buffers, Tabs
 Plugin 'scrooloose/nerdtree'
+Plugin 'kien/ctrlp.vim'
+Plugin 'tacahiroy/ctrlp-funky'
+" Plugin 'Shougo/unite.vim'
+Plugin 'szw/vim-ctrlspace'
 
 " Fast Moving
 Plugin 'Lokaltog/vim-easymotion'
@@ -199,6 +202,9 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
+" no more hightlight
+nnoremap <silent> <leader><Esc> :nohlsearch<CR><Esc>
+
 map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo '.vimrc reloaded'"<CR>
 command! W w !sudo tee % > /dev/null
 
@@ -232,20 +238,41 @@ nnoremap <leader>d :NERDTreeToggle<cr>
 let NERDSpaceDelims=1
 let NERDCompactSexyComs=1
 
+" fugitive
+nmap <Leader>gs :Gstatus<CR>
+
 " GitGutter
 let g:gitgutter_enabled = 0
-nmap <leader>g :GitGutterToggle<CR>
+nmap <leader>gg :GitGutterToggle<CR>
 
 " Tagbar
 nmap <leader>] :TagbarToggle<CR>
 
 " ctrlp
+" nmap <leader>b :CtrlPBuffer<CR>
+let g:ctrlp_extensions = ['funky']
 let g:ctrlp_match_window = 'order:ttb,max:20'
 let g:ctrlp_show_hidden = 1
-nmap <leader>b :CtrlPBuffer<CR>
 if executable('ag')
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g "" --hidden'
+endif
+" funky
+let g:ctrlp_funky_syntax_highlight=1
+let g:ctrlp_funky_matchtype='path'
+
+" CtrlSpace
+nmap <leader>b :CtrlSpace<CR>
+hi CtrlSpaceSelected term=reverse ctermfg=187  ctermbg=23  cterm=bold
+hi CtrlSpaceNormal   term=NONE    ctermfg=244  ctermbg=232 cterm=NONE
+hi CtrlSpaceSearch   ctermfg=220  ctermbg=NONE cterm=bold
+hi CtrlSpaceStatus   ctermfg=230  ctermbg=234  cterm=NONE
+let g:ctrlspace_set_default_mapping=0
+let g:ctrlspace_search_timing=[30,30]
+let g:ctrlspace_unicode_font=0
+let g:ctrlspace_use_ruby_bindings=1
+if executable("ag")
+  let g:ctrlspace_glob_command = 'ag -l --nocolor -g "" --hidden'
 endif
 
 " neocomplcache
