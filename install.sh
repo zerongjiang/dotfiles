@@ -48,9 +48,16 @@ linkdot .gitconfig
 # mux
 linkdot .screenrc
 linkdot .tmux.conf
+linkdot .tmux.reset.conf
 
 # Xorg
 linkdot .Xresources
 linkdot .Xcolors
 linkdot .xinitrc
 linkdot .Xmodmap
+
+# ag
+linkdot .agignore
+
+# urxvt
+linkdot .urxvt

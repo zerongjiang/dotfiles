@@ -43,7 +43,7 @@ PS1='\n\[\e[0;36m\]┌─[\[\e[1;35m\]\u\[\e[1;34m\] @ \[\e[1;35m\]\h\[\e[0;36m\
 # command prompt... HOLY SHIT MAGIC!
 case $TERM in
     screen*)
-        SCREENTITLE='\[\ek\e\\\]\[\ek\W\e\\\]'
+        SCREENTITLE='\[\ek\e\\\]\[\ek\W\e\\\]\[\e]2;\W\e\\\]'
         ;;
     *)
         SCREENTITLE=''

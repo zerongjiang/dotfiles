@@ -31,7 +31,7 @@ termcapinfo xterm*|urxvt* ti@:te@
 caption always "%{= kw}%-Lw%{=b rw}%50>[%n* %t]%{= kw}%+Lw%<"
 
 backtick 1 0 0 whoami
-backtick 2 5 5 $HOME/dotfiles/lib/screen/sh/memory.sh
+backtick 2 5 5 $HOME/dotfiles/lib/mux/sh/memory.sh
 
 hardstatus off
 hardstatus alwayslastline
@@ -51,3 +51,13 @@ bind k focus up
 bind ^k focus up
 bind l focus right
 bind ^l focus right
+
+bind s split
+bind v split -v
+bind q remove
+
+bind z resize max
+bind = resize =
+
+bind H resize -10
+bind L resize +10

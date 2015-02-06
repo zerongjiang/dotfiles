@@ -17,6 +17,7 @@ XTerm.termName:        xterm-256color
 XTerm.scrollBar:       false
 XTerm.rightScrollBar:  true
 XTerm.dynamicColors:   true
+XTerm.VT100.metaSendsEscape: true
 
 ! Colorful Man Page
 *VT100.colorBDMode:     true
