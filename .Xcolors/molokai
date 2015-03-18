@@ -32,3 +32,5 @@
 !white
 *color7: #9999aa
 *color15: #d0d0d0
+
+! vim: set ft=xdefaults:

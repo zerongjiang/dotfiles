@@ -4,7 +4,7 @@
 !
 
 ! color palette
-#include "./.Xcolors/jhvid"
+#include "./.Xcolors/coral-reef"
 
 *saveLines:    65535
 *cursorBlink:  true
@@ -59,6 +59,7 @@ URxvt.font:              xft:Terminus-8,\
                          xft:Terminus (TTF):antialias=True:pixelsize=12,\
                          xft:WenQuanYi Bitmap Song-8
 ! URxvt.font:            xft:DejaVu Sans Mono:antialias=True:pixelsize=12,\
+!                        xft:Terminus (TTF):antialias=True:pixelsize=12,\
 !                        xft:WenQuanYi Micro Hei Mono:antialias=True:pixelsize=12
 ! URxvt*italicFont:      font
 ! URxvt*boldItalicFont:  font
@@ -75,10 +76,11 @@ URxvt.font:              xft:Terminus-8,\
 
 ! Clickable URL
 URxvt.perl-ext-common:  default,matcher,clipboard
-URxvt.url-launcher:     chromium
-URxvt.matcher.button:   1
-
 ! URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
+
+! ext: matcher
+URxvt.url-launcher:     firefox
+URxvt.matcher.button:   1
 
 ! URxvt.url-select.launcher:  google-chrome
 ! URxvt.url-select.underline: true
@@ -88,6 +90,7 @@ URxvt.matcher.button:   1
 ! URxvt.keysym.M-Escape:      perl:keyboard-select:activate
 ! URxvt.keysym.M-s:           perl:keyboard-select:search
 
+! ext: clipboard
 URxvt.iso14755:         false
 URxvt.iso14755_52:      false
 URxvt.keysym.Shift-Control-C:   perl:clipboard:copy

@@ -33,3 +33,5 @@
 *colorIT:                #ffffff
 *colorUL:                #dca3a3
 *underlineColor:         #709080
+
+! vim: set ft=xdefaults:

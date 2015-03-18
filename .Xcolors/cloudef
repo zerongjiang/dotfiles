@@ -19,8 +19,8 @@
 *color11: #feed6c
 
 !blue
-*color4: #4e82aa
-*color12: #0c73c2
+*color4: #0c73c2
+*color12: #4e82aa
 
 !magenta
 *color5: #8c54fe
@@ -33,3 +33,5 @@
 !white
 *color7: #ccccc6
 *color15: #f8f8f2
+
+! vim: set ft=xdefaults:

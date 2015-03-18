@@ -1,0 +1,35 @@
+*background: #171717
+*foreground: #ffffff
+
+! Black
+*color0: #292929
+*color8: #3d3d3d
+
+! Red
+*color1: #de6951
+*color9: #c56a47
+
+! Green
+*color2: #bcda55
+*color10: #9dbf60
+
+! Yellow
+*color3: #e2a564
+*color11: #ec8a25
+
+! Blue
+*color4: #2187f6
+*color12: #5495dc
+
+! Magenta
+*color5: #875c8d
+*color13: #e41f66
+! cyan
+*color6: #4390b1
+*color14: #276cc2
+
+! white
+*color7: #d2d2d2
+*color15: #ffffff
+
+! vim: set ft=xdefaults:
