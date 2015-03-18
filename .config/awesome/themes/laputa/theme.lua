@@ -71,7 +71,7 @@ theme.mouse_finder_color = "#CC9393"
 -- menu_[border_color|border_width]
 theme.menu_height = 18
 theme.menu_width  = 100
-theme.menu_border_color = "#000"
+theme.menu_border_color = "#000000"
 theme.menu_border_width = 1
 -- }}}
 

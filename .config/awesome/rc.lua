@@ -298,7 +298,7 @@ globalkeys = awful.util.table.join(
             awful.client.focus.byidx(-1)
             if client.focus then client.focus:raise() end
         end),
-    awful.key({ modkey,           }, "w", function () mymainmenu:toggle() end),
+    awful.key({ modkey,           }, "a", function () mymainmenu:toggle() end),
 
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end),
@@ -323,10 +323,10 @@ globalkeys = awful.util.table.join(
 
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)    end),
     awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)    end),
-    awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1)      end),
-    awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1)      end),
-    awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol( 1)         end),
-    awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1)         end),
+    awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster( 1)      end),
+    awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster(-1)      end),
+    awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol( 1)         end),
+    awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol(-1)         end),
     awful.key({ modkey,           }, "space", function () awful.layout.inc(layouts,  1) end),
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(layouts, -1) end),
 
@@ -348,7 +348,13 @@ globalkeys = awful.util.table.join(
     -- Fn Keys (xev get keyname)
     awful.key({ }, "XF86AudioRaiseVolume", function () volume.up()    end),
     awful.key({ }, "XF86AudioLowerVolume", function () volume.down()  end),
-    awful.key({ }, "XF86AudioMute",        function () volume.mute()  end)
+    awful.key({ }, "XF86AudioMute",        function () volume.mute()  end),
+
+    -- Customized program
+    awful.key({ modkey,           }, "e", function () awful.util.spawn('pcmanfm') end),
+    awful.key({ modkey,           }, "w", function () awful.util.spawn('google-chrome-unstable') end),
+    awful.key({ modkey,           }, "s", function () awful.util.spawn_with_shell("sleep 0.3 && scrot -s /tmp/'scrot_%m-%d-%s_$wx$h.png'") end),
+    awful.key({                   }, "Print", function () awful.util.spawn_with_shell("sleep 0.3 && scrot -s /tmp/'scrot_%m-%d-%s_$wx$h.png'") end)
 )
 
 clientkeys = awful.util.table.join(
