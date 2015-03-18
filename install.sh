@@ -24,7 +24,9 @@ if [ ! -h $HOME/.bashrc ]; then
     echo '.bashrc sourcing'
     line='[[ -f ~/dotfiles/.bashrc ]] && . ~/dotfiles/.bashrc'
     if ! grep -Fxq "$line" $HOME/.bashrc; then
-        echo "$line" >> $HOME/.bashrc
+        echo "
+# source dotfiles
+$line" >> $HOME/.bashrc
     fi
 else
     linkdot .bashrc
@@ -50,14 +52,24 @@ linkdot .screenrc
 linkdot .tmux.conf
 linkdot .tmux.reset.conf
 
+# ag
+linkdot .agignore
+
 # Xorg
 linkdot .Xresources
 linkdot .Xcolors
 linkdot .xinitrc
 linkdot .Xmodmap
 
-# ag
-linkdot .agignore
-
 # urxvt
 linkdot .urxvt
+
+# .fonts
+linkdot .fonts
+linkdot .fonts.conf.d
+
+# awesomw wm
+if [ ! -e $HOME/.config ]; then
+    mkdir $HOME/.config
+fi
+linkdot .config/awesome
