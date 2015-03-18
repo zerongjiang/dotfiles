@@ -38,7 +38,8 @@ hardstatus alwayslastline
 hardstatus string "%{= dc}[ %{= dM}%1`%{= dB}@%{= dM}%H%{= dc} ]%=%{= dc}[ %{= dM}%2`%{= dc} ]-[ %{= dM}%l%{= dc} ]-[ %{= dM}%M %d %c%{= dc} ]"
 
 # $ is the delimiter of PS1, bash if the default title
-shelltitle "] |bash"
+# shelltitle "] |bash"
+shelltitle "╼ |bash"
 
 # ^a R  reload screenrc
 bind R eval "source $HOME/.screenrc" "echo '.screenrc reloaded!'"

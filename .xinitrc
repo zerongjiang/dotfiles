@@ -35,9 +35,10 @@ fcitx &
 ################
 # applications
 ################
-dropboxd &
+dropbox &
 # conky &
 
+wmname LG3D
 exec awesome
 # exec i3
 # exec openbox-session

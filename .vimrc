@@ -78,22 +78,27 @@ Plugin 'gmarik/vundle'
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tacahiroy/ctrlp-funky'
+Plugin 'ivalkeen/vim-ctrlp-tjump'
 " Plugin 'Shougo/unite.vim'
+" Plugin 'bling/vim-bufferline'
 Plugin 'szw/vim-ctrlspace'
+" Plugin 'eshion/vim-sftp-sync'
+" Plugin 'tpope/vim-vinegar'
 
 " Fast Moving
 Plugin 'Lokaltog/vim-easymotion'
+" Plugin 'terryma/vim-expand-region'
 
 " Code Completion
-" Plugin 'Valloric/YouCompleteMe'
-" Plugin 'SirVer/ultisnips'
-" Plugin 'honza/vim-snippets'
-Plugin 'denzeljiang/vim-eclim'
-
-Plugin 'Shougo/neocomplcache'
-Plugin 'Shougo/neosnippet'
-Plugin 'Shougo/neosnippet-snippets'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
+" Plugin 'denzeljiang/vim-eclim'
+
+" Plugin 'Shougo/neocomplcache'
+" Plugin 'Shougo/neosnippet'
+" Plugin 'Shougo/neosnippet-snippets'
+" Plugin 'honza/vim-snippets'
 
 " Plugin 'garbas/vim-snipmate'
 " Plugin 'MarcWeber/vim-addon-mw-utils'
@@ -106,11 +111,12 @@ Plugin 'mattn/emmet-vim'
 Plugin 'Raimondi/delimitMate'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-ragtag'
-Plugin 'tpope/vim-rails'
+" Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'vim-scripts/matchit.zip'
+" Plugin 'wellle/targets.vim'
 
 " Comment
 Plugin 'scrooloose/nerdcommenter'
@@ -128,11 +134,14 @@ Plugin 'bling/vim-airline'
 
 " Style guide
 Plugin 'nathanaelkane/vim-indent-guides'
+" Plugin 'Yggdroot/indentLine'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'bronson/vim-trailing-whitespace'
 
 " Syntax
 Plugin 'majutsushi/tagbar'
+" Plugin 'xolox/vim-misc'
+" Plugin 'xolox/vim-easytags'
 Plugin 'scrooloose/syntastic'
 
 " Search
@@ -140,6 +149,10 @@ Plugin 'mileszs/ack.vim'
 " Plugin 'rking/ag.vim'
 
 " Utils
+" Plugin 'editorconfig/editorconfig-vim'
+" Plugin 'mhinz/vim-startify'
+" Plugin 'mattn/gist-vim'
+Plugin 'myusuf3/numbers.vim'
 Plugin 'Shougo/vinarise.vim'
 " Plugin 'itchyny/calendar.vim'
 Plugin 'vim-scripts/DrawIt'
@@ -149,6 +162,9 @@ Plugin 'chrisbra/csv.vim'
 Plugin 'rodjek/vim-puppet'
 Plugin 'tpope/vim-markdown'
 " Plugin 'puppetlabs/puppet-syntax-vim'
+
+" languages
+" Plugin 'pangloss/vim-javascript'
 
 "------------
 " Deprecated
@@ -167,25 +183,35 @@ Plugin 'tpope/vim-markdown'
 " Color Schemes
 "---------------
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'baskerville/bubblegum'
 Plugin 'chriskempson/vim-tomorrow-theme'
 Plugin 'ciaranm/inkpot'
+Plugin 'dsolstad/vim-wombat256i'
 Plugin 'fisadev/fisa-vim-colorscheme'
+Plugin 'freeo/vim-kalisi'
+Plugin 'jnurmine/Zenburn'
+Plugin 'jonathanfilip/vim-lucius'
 Plugin 'junegunn/seoul256.vim'
 Plugin 'Lokaltog/vim-distinguished'
+Plugin 'morhetz/gruvbox'
 Plugin 'nanotech/jellybeans.vim'
-Plugin 'rickharris/vim-blackboard'
-Plugin 'rickharris/vim-monokai'
+Plugin 'Pychimp/vim-luna'
+Plugin 'Pychimp/vim-sol'
+Plugin 'sjl/badwolf'
 Plugin 'tomasr/molokai'
 Plugin 'tpope/vim-vividchalk'
+Plugin 'twerth/ir_black'
 Plugin 'vim-scripts/tir_black'
 Plugin 'vim-scripts/xoria256.vim'
+Plugin 'w0ng/vim-hybrid'
+Plugin 'zeis/vim-kolor'
 
 call vundle#end()
 filetype plugin indent on
 syntax on
 
 set background=dark
-colo molokai
+colo Tomorrow-Night
 
 "-------------
 " Key Mapping
@@ -194,7 +220,14 @@ colo molokai
 " basic
 let mapleader=","
 nnoremap ; :
-imap jj <Esc>
+inoremap jj <Esc>
+
+cnoremap vh vert bo h<space>
+
+nnoremap <Leader>sh :leftabove vnew<CR>
+nnoremap <Leader>sj :rightbelow new<CR>
+nnoremap <Leader>sk :leftabove new<CR>
+nnoremap <Leader>sl :rightbelow vnew<CR>
 
 " navigation between split windows
 nnoremap <c-j> <c-w>j
@@ -205,7 +238,8 @@ nnoremap <c-l> <c-w>l
 " no more hightlight
 nnoremap <silent> <leader><Esc> :nohlsearch<CR><Esc>
 
-map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo '.vimrc reloaded'"<CR>
+nnoremap <leader>ev :vertical botright split $MYVIMRC<cr>
+nnoremap <silent> <leader>V :source $MYVIMRC<CR>:filetype detect<CR>:exe ":echo '.vimrc reloaded'"<CR>
 command! W w !sudo tee % > /dev/null
 
 if executable('ag')
@@ -232,37 +266,55 @@ let NERDTreeShowHidden=1
 let NERDTreeDirArrows=0
 let NERDChristmasTree=1
 let NERDTreeChDirMode=2
+let NERDTreeQuitOnOpen=1
 nnoremap <leader>d :NERDTreeToggle<cr>
 
 " nerdcommenter
 let NERDSpaceDelims=1
 let NERDCompactSexyComs=1
 
+" numbers
+let g:numbers_exclude = ['help', 'gitcommit', 'nerdtree']
+
 " fugitive
-nmap <Leader>gs :Gstatus<CR>
+nnoremap <Leader>gs :Gstatus<CR>
 
 " GitGutter
 let g:gitgutter_enabled = 0
-nmap <leader>gg :GitGutterToggle<CR>
+let g:gitgutter_map_keys = 0
+noremap <leader>gg :GitGutterToggle<CR>
+nnoremap [h :GitGutterPrevHunk<CR>
+nnoremap ]h :GitGutterNextHunk<CR>
+nnoremap <Leader>gv :GitGutterPreviewHunk<CR>
+nnoremap <Leader>gc :GitGutterStageHunk<CR>
+nnoremap <Leader>gr :GitGutterRevertHunk<CR>
 
 " Tagbar
-nmap <leader>] :TagbarToggle<CR>
+nnoremap <leader>] :TagbarToggle<CR>
 
 " ctrlp
-" nmap <leader>b :CtrlPBuffer<CR>
-let g:ctrlp_extensions = ['funky']
+let g:ctrlp_extensions = ['buffertag', 'funky']
 let g:ctrlp_match_window = 'order:ttb,max:20'
 let g:ctrlp_show_hidden = 1
+let g:ctrlp_prompt_mappings = {
+  \ 'AcceptSelection("h")': ['<c-i>']
+  \ }
 if executable('ag')
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g "" --hidden'
 endif
+nnoremap <leader>fb :CtrlPBuffer<CR>
+nnoremap <leader>ft :CtrlPBufTag<CR>
 " funky
 let g:ctrlp_funky_syntax_highlight=1
 let g:ctrlp_funky_matchtype='path'
+nnoremap <leader>ff :CtrlPFunky<CR>
+" tjump
+nnoremap <Leader>t :CtrlPtjump<cr>
+" nnoremap <c-]> :CtrlPtjump<cr>
 
 " CtrlSpace
-nmap <leader>b :CtrlSpace<CR>
+nnoremap <leader>b :CtrlSpace<CR>
 hi CtrlSpaceSelected term=reverse ctermfg=187  ctermbg=23  cterm=bold
 hi CtrlSpaceNormal   term=NONE    ctermfg=244  ctermbg=232 cterm=NONE
 hi CtrlSpaceSearch   ctermfg=220  ctermbg=NONE cterm=bold
@@ -282,8 +334,8 @@ let g:neocomplcache_enable_smart_case=1
 let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 let g:neocomplcache_auto_completion_start_length=3
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-imap <C-j> <Plug>(neosnippet_expand_or_jump)
-smap <C-j> <Plug>(neosnippet_expand_or_jump)
+inoremap <C-j> <Plug>(neosnippet_expand_or_jump)
+snoremap <C-j> <Plug>(neosnippet_expand_or_jump)
 
 if !exists('g:neocomplcache_omni_patterns')
   let g:neocomplcache_omni_patterns = {}
@@ -336,6 +388,7 @@ let g:Powerline_mode_cv = 'V⋅B'
 
 " airline
 let g:airline#extensions#syntastic#enabled = 0
+" let g:airline#extensions#bufferline#enabled = 0
 let g:airline#extensions#tagbar#enabled = 0
 " let g:airline#extensions#tabline#enabled = 1
 let g:airline_mode_map = {
@@ -387,3 +440,9 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType c setlocal omnifunc=ccomplete#Complete
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+
+autocmd! BufWritePost .Xresources   !xrdb -load ~/.Xresources
+
+if filereadable(expand("~/.vimrc.local"))
+  source ~/.vimrc.local
+endif
