@@ -7,14 +7,19 @@ alias ll='ls -al'
 alias lll='ll -i -h --time-style=long-iso'
 alias grep='grep --color=auto'
 
-# archlinux
-alias pacman='sudo pacman --color=auto'
-
 alias sshfs='sshfs -o Ciphers=arcfour -o cache_stat_timeout=600 -o workaround=nodelaysrv'
 
 # shortcuts
 alias x='startx'
-alias 256colors='(x=`tput op` y=`printf %76s`;for i in {0..256};do o=00$i;echo -e ${o:${#o}-3:3} `tput setaf $i;tput setab $i`${y// /=}$x;done)'
+alias 256colors='(x=`tput op` y=`printf %4s`
+    echo BLK RED GRN YEL BLU MAG CYN WHT
+    for i in {1..256}; do
+        c=$((i-1))
+        echo -en `tput setaf $c;tput setab $c`${y// /=}$x
+        if [ $(($i % 8)) -eq 0 ]; then
+            echo
+        fi
+    done)'
 
 # quick edit
 alias suvim='sudo vim'
@@ -26,15 +31,34 @@ alias ealias="vim ~/.bash_aliases"
 alias sshtunnel='ssh -qTfnN -D 8080'
 alias myip="curl ifconfig.me"
 alias serverthis="python2 -m SimpleHTTPServer"
+alias pbin="curl -F 'f:1=<-' ix.io"
+alias pbin2="curl -F 'sprunge=<-' sprunge.us"
 
-#power manage
+# power manage
 alias bye='sudo shutdown -h now'
 alias away="sudo sh -c 'echo -n mem > /sys/power/state'"
 
 # git
-alias gs="git status"
-alias gd="git diff"
+alias gs='git status'
+alias gd='git diff'
+alias gl='git lg'
+alias gco='git checkout'
+alias gmg='git merge'
+alias grb='git rebase'
+alias gcp='git cherry-pick'
 alias m="git add -u && git commit -m"
+
+# package manager
+alias pacman='pacman --color=auto'
+alias pmi='sudo pacman -S'
+alias pmip='sudo pacman -U'
+alias pms='pacman -Ss'
+alias pmsi='pacman -Si'
+alias pmrm='sudo pacman -Rsn'
+alias pmwho='pacman -Qo'
+alias pmls='pacman -Ql'
+alias pmlo='pacman -Qdt'
+alias pmclean='sudo pacman -Rsn $(pacman -Qdtq)'
 
 mkalias () { echo "alias $1='$2'" >> ~/.bash_aliases; }
 
