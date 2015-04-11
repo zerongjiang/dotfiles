@@ -48,6 +48,7 @@ set shiftwidth=4  " indent size
 
 " autocmd FileType php setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
 autocmd FileType html setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
+autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
 autocmd FileType yaml setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
 
 set wrap
@@ -93,7 +94,7 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-" Plugin 'denzeljiang/vim-eclim'
+Plugin 'denzeljiang/vim-eclim'
 
 " Plugin 'Shougo/neocomplcache'
 " Plugin 'Shougo/neosnippet'
@@ -105,6 +106,7 @@ Plugin 'honza/vim-snippets'
 " Plugin 'tomtom/tlib_vim'
 
 " Productivity
+Plugin 'terryma/vim-multiple-cursors'
 Plugin 'godlygeek/tabular'
 " Plugin 'junegunn/vim-easy-align'
 Plugin 'mattn/emmet-vim'
@@ -150,7 +152,7 @@ Plugin 'mileszs/ack.vim'
 
 " Utils
 " Plugin 'editorconfig/editorconfig-vim'
-" Plugin 'mhinz/vim-startify'
+Plugin 'mhinz/vim-startify'
 " Plugin 'mattn/gist-vim'
 Plugin 'myusuf3/numbers.vim'
 Plugin 'Shougo/vinarise.vim'
