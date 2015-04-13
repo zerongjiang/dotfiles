@@ -50,6 +50,7 @@ set shiftwidth=4  " indent size
 autocmd FileType html setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
 autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
 autocmd FileType yaml setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
+autocmd FileType vim setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
 
 set wrap
 
@@ -113,7 +114,7 @@ Plugin 'mattn/emmet-vim'
 Plugin 'Raimondi/delimitMate'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-ragtag'
-" Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
@@ -166,7 +167,7 @@ Plugin 'tpope/vim-markdown'
 " Plugin 'puppetlabs/puppet-syntax-vim'
 
 " languages
-" Plugin 'pangloss/vim-javascript'
+Plugin 'pangloss/vim-javascript'
 
 "------------
 " Deprecated
@@ -335,9 +336,17 @@ let g:neocomplcache_enable_at_startup=1
 let g:neocomplcache_enable_smart_case=1
 let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 let g:neocomplcache_auto_completion_start_length=3
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <C-j> <Plug>(neosnippet_expand_or_jump)
-snoremap <C-j> <Plug>(neosnippet_expand_or_jump)
+" inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+" imap <C-j> <Plug>(neosnippet_expand_or_jump)
+" smap <C-j> <Plug>(neosnippet_expand_or_jump)
+" xmap <C-j> <Plug>(neosnippet_expand_target)
+" imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+  " \ "\<Plug>(neosnippet_expand_or_jump)"
+  " \: pumvisible() ? "\<C-n>" : "\<TAB>"
+" smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+  " \ "\<Plug>(neosnippet_expand_or_jump)"
+  " \: "\<TAB>"
+" let g:neosnippet#enable_snipmate_compatibility = 1
 
 if !exists('g:neocomplcache_omni_patterns')
   let g:neocomplcache_omni_patterns = {}

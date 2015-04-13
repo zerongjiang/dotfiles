@@ -20,6 +20,7 @@ linkdot()
 }
 
 # bash
+linkdot .bash_profile
 if [ ! -h $HOME/.bashrc ]; then
     echo '.bashrc sourcing'
     line='[[ -f ~/dotfiles/.bashrc ]] && . ~/dotfiles/.bashrc'

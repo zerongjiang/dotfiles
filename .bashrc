@@ -81,7 +81,7 @@ PS1="${PS1}${SCREENTITLE}"
 # local
 ################
 
-[[ -f ~/.bash_local ]] && . ~/.bash_local
+[[ -s ~/.bash_local ]] && . ~/.bash_local
 
 ################
 # environment
@@ -90,27 +90,15 @@ PS1="${PS1}${SCREENTITLE}"
 export EDITOR="vim"
 export BROWSER="firefox"
 
-# Java
-if [[ -d ~/opt/java ]]; then
-    export JAVA_HOME=~/opt/java
-    export PATH=$JAVA_HOME/bin:$PATH
-fi
+# rvm
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+[[ -r $HOME/.rvm/scripts/completion ]] && . $HOME/.rvm/scripts/completion
 
-# android
-if [[ -d ~/opt/android/sdk ]]; then
-    export ANDROID_SDK=~/opt/android/sdk
-    export PATH=$PATH:$ANDROID_SDK/tools:$ANDROID_SDK/platform-tools
-fi
-
-#ruby
-if [[ -d $HOME/.rvm/bin ]]; then
-    export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-    # source ~/.rvm/scripts/rvm
-    # export PATH=$PATH:$(ruby -rubygems -e "puts Gem.user_dir")/bin
-fi
+# nvm
+[ -s "$HOME/.nvm/nvm.sh" ] && . "$HOME/.nvm/nvm.sh"
 
 # 256-color gruvbox palette shellscript
-if [ -f $HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh ]; then
+if [[ -s $HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh ]]; then
     source $HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh
 fi
 
