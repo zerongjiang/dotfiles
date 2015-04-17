@@ -60,6 +60,12 @@ alias pmls='pacman -Ql'
 alias pmlo='pacman -Qdt'
 alias pmclean='sudo pacman -Rsn $(pacman -Qdtq)'
 
+# eclim
+if [[ -e ~/opt/eclipse/eclimd ]]; then
+    alias eclim='(Xvfb :8 -screen 0 1024x768x24; DISPLAY=:8 ~/opt/eclipse/eclimd -b) &'
+    alias eclimd='~/opt/eclipse/eclimd &'
+fi
+
 mkalias () { echo "alias $1='$2'" >> ~/.bash_aliases; }
 
 man () {
