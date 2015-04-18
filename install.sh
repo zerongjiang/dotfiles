@@ -16,7 +16,9 @@ linkdot()
     fi
 
     echo "$1 Linking"
-    ln -s $source $target
+    source="dotfiles/$1"
+    target="$1"
+    (cd $HOME && ln -sr $source $target)
 }
 
 # bash
