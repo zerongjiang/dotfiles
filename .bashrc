@@ -97,6 +97,11 @@ export BROWSER="firefox"
 # nvm
 [ -s "$HOME/.nvm/nvm.sh" ] && . "$HOME/.nvm/nvm.sh"
 
+if [[ -d $HOME/.pyenv ]]; then
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+fi
+
 # 256-color gruvbox palette shellscript
 if [[ -s $HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh ]]; then
     source $HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh

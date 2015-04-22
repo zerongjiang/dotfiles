@@ -32,4 +32,8 @@ if [[ -d $HOME/.nvm ]]; then
     export NVM_DIR=$HOME/.nvm
 fi
 
+if [[ -d $HOME/.pyenv ]]; then
+    export PATH="$HOME/.pyenv/bin:$PATH"
+fi
+
 [[ -s "$HOME/.bashrc" ]] && source "$HOME/.bashrc"
