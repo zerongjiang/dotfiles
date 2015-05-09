@@ -8,7 +8,7 @@
 
 *saveLines:    65535
 *cursorBlink:  true
-*cursorColor:  #a6e22e
+! *.cursorColor:  #a6e22e
 *preeditType:  Root
 
 ! XTerm {{{

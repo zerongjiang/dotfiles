@@ -13,7 +13,7 @@ alias sshfs='sshfs -o Ciphers=arcfour -o cache_stat_timeout=600 -o workaround=no
 alias x='startx'
 alias 256colors='(x=`tput op` y=`printf %4s`
     echo BLK RED GRN YEL BLU MAG CYN WHT
-    for i in {1..256}; do
+    for i in {1..16}; do
         c=$((i-1))
         echo -en `tput setaf $c;tput setab $c`${y// /=}$x
         if [ $(($i % 8)) -eq 0 ]; then

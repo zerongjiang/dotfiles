@@ -2,6 +2,7 @@
 ! *.foreground:       #EEEEEE
 *.background: #1a1a1a
 *.foreground: #ffffff
+*.cursorColor: #AFCB66
 
 !black
 *.color0:  #000000
@@ -16,7 +17,7 @@
 !yellow
 *.color3:  #D4B63C
 *.color11: #D4BE66
-!blue 
+!blue
 *.color4:  #5A89C4
 *.color12: #847FC4
 !magenta

@@ -3,6 +3,7 @@
 *.background: #353333
 *.foreground: #ffffff
 ! *.foreground: #dedede
+*.cursorColor:  #a6e22e
 
 *.color0: #464444
 *.color1: #EF3460

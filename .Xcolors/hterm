@@ -1,4 +1,4 @@
-! extracted from hterm
+! extracted from chromium hterm
 
 *.background: #0f0f0f
 *.foreground: #f0f0f0

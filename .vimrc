@@ -215,6 +215,8 @@ syntax on
 
 set background=dark
 colo Tomorrow-Night
+" set background=light
+" colo hybrid-light
 
 "-------------
 " Key Mapping
@@ -452,6 +454,7 @@ autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType c setlocal omnifunc=ccomplete#Complete
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 
+" autocmd! BufWritePost .Xresources   !xrdb -load ~/.Xresources && urxvt -e bash -c "tmux att" &
 autocmd! BufWritePost .Xresources   !xrdb -load ~/.Xresources
 
 if filereadable(expand("~/.vimrc.local"))
