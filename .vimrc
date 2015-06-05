@@ -165,6 +165,7 @@ Plugin 'chrisbra/csv.vim'
 Plugin 'rodjek/vim-puppet'
 Plugin 'tpope/vim-markdown'
 " Plugin 'puppetlabs/puppet-syntax-vim'
+Plugin 'chase/vim-ansible-yaml'
 
 " languages
 Plugin 'pangloss/vim-javascript'
@@ -187,6 +188,7 @@ Plugin 'pangloss/vim-javascript'
 "---------------
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'baskerville/bubblegum'
+Plugin 'chriskempson/base16-vim'
 Plugin 'chriskempson/vim-tomorrow-theme'
 Plugin 'ciaranm/inkpot'
 Plugin 'dsolstad/vim-wombat256i'

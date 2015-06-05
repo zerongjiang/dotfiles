@@ -1,7 +1,6 @@
 #!/bin/sh
 
-linkdot()
-{
+linkdot(){
     source="$HOME/dotfiles/$1"
     target="$HOME/$1"
 
@@ -22,57 +21,137 @@ linkdot()
 }
 
 # bash
-linkdot .bash_profile
-if [ ! -h $HOME/.bashrc ]; then
-    echo '.bashrc sourcing'
-    line='[[ -f ~/dotfiles/.bashrc ]] && . ~/dotfiles/.bashrc'
-    if ! grep -Fxq "$line" $HOME/.bashrc; then
-        echo "
-# source dotfiles
-$line" >> $HOME/.bashrc
+link_bash(){
+    linkdot .bash_profile
+    if [ ! -h $HOME/.bashrc ]; then
+        echo '.bashrc sourcing'
+        line='[[ -f ~/dotfiles/.bashrc ]] && . ~/dotfiles/.bashrc'
+        if ! grep -Fxq "$line" $HOME/.bashrc; then
+            echo "
+    # source dotfiles
+    $line" >> $HOME/.bashrc
+        fi
+    else
+        linkdot .bashrc
     fi
-else
-    linkdot .bashrc
-fi
-linkdot .bash_aliases
-linkdot .bash_local
+    linkdot .bash_aliases
+    linkdot .bash_local
+}
 
 # vim
-if [ ! -e $HOME/.vim/bundle ]; then
-    if [ -e $HOME/.vim ]; then
-        mv $HOME/.vim $HOME/.vim.dotbak
+link_vim(){
+    if [ ! -e $HOME/.vim/bundle ]; then
+        if [ -e $HOME/.vim ]; then
+            mv $HOME/.vim $HOME/.vim.dotbak
+        fi
+        mkdir -p $HOME/.vim/bundle
     fi
-    mkdir -p $HOME/.vim/bundle
-fi
-linkdot .vimrc
-linkdot .vim/bundle/vundle
+    linkdot .vimrc
+    linkdot .vim/bundle/vundle
+}
 
 # git
-linkdot .gitconfig
+link_git(){
+    linkdot .gitconfig
+}
 
 # mux
-linkdot .screenrc
-linkdot .tmux.conf
-linkdot .tmux.reset.conf
+link_mux(){
+    linkdot .screenrc
+    linkdot .tmux.conf
+    linkdot .tmux.reset.conf
+}
 
 # ag
-linkdot .agignore
+link_ag(){
+    linkdot .agignore
+}
 
 # Xorg
-linkdot .Xresources
-linkdot .Xcolors
-linkdot .xinitrc
-linkdot .Xmodmap
+link_x11(){
+    linkdot .Xresources
+    linkdot .Xcolors
+    linkdot .xinitrc
+    linkdot .Xmodmap
+}
 
 # urxvt
-linkdot .urxvt
+link_urxvt(){
+    linkdot .urxvt
+}
 
 # .fonts
-linkdot .fonts
-linkdot .fonts.conf.d
+link_fonts(){
+    linkdot .fonts
+    linkdot .fonts.conf.d
+}
 
 # awesomw wm
-if [ ! -e $HOME/.config ]; then
-    mkdir $HOME/.config
+link_awesome(){
+    if [ ! -e $HOME/.config ]; then
+        mkdir $HOME/.config
+    fi
+    linkdot .config/awesome
+}
+
+link_cli(){
+    link_bash
+    link_vim
+    link_git
+    link_mux
+    link_ag
+}
+
+link_gui(){
+    link_x11
+    link_urxvt
+    link_fonts
+    link_awesome
+}
+
+link_all(){
+    link_cli
+    depoly_gui
+}
+
+update_vim(){
+    vim +PluginUpdate +qall
+}
+
+update_ycm(){
+    (cd $HOME/.vim/bundle/YouCompleteMe && ./install.sh --clang-completer)
+}
+
+update_all(){
+    update_vim
+    update_ycm
+}
+
+usage(){
+cat << EOF
+$(basename "$0") -- script to link and update dotfile compoments
+
+Usage:
+ command [compoments]
+
+Commands:
+ link       symbolic link dotfile compoments
+ update     update dotfile compoments
+
+Compoments:
+ all
+   - cli: bash vim git mux ag
+   - gui: x11 urxvt fonts awesome
+EOF
+}
+
+if [ $# -le 1 ]; then
+    usage
+else
+    action=$1
+    for item in ${@:2} ; do
+        if [ "$(type -t $action'_'$item)" = function ]; then
+            $action'_'$item
+        fi
+    done
 fi
-linkdot .config/awesome
