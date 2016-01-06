@@ -40,13 +40,15 @@ alias away="sudo sh -c 'echo -n mem > /sys/power/state'"
 
 # git
 alias gs='git status'
-alias gd='git diff'
 alias gl='git lg'
+alias gd='git diff'
+alias gdl='git diff HEAD^ HEAD'
+alias m="git add -u && git commit -m"
+alias mm='git add -u && git commit --amend'
 alias gco='git checkout'
 alias gmg='git merge'
 alias grb='git rebase'
 alias gcp='git cherry-pick'
-alias m="git add -u && git commit -m"
 
 # package manager
 alias pacman='pacman --color=auto'
