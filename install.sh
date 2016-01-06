@@ -4,7 +4,7 @@ linkdot(){
     source="$HOME/dotfiles/$1"
     target="$HOME/$1"
 
-    if [ -h $target ]; then
+    if [ -e $target ]; then
         if [ $target -ef $source ]; then
             echo "$1 Linked"
             return
@@ -23,13 +23,13 @@ linkdot(){
 # bash
 link_bash(){
     linkdot .bash_profile
-    if [ ! -h $HOME/.bashrc ]; then
+    if [ -f $HOME/.bashrc ]; then
         echo '.bashrc sourcing'
         line='[[ -f ~/dotfiles/.bashrc ]] && . ~/dotfiles/.bashrc'
         if ! grep -Fxq "$line" $HOME/.bashrc; then
             echo "
-    # source dotfiles
-    $line" >> $HOME/.bashrc
+# source dotfiles
+$line" >> $HOME/.bashrc
         fi
     else
         linkdot .bashrc

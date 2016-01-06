@@ -61,6 +61,7 @@ alias pmwho='pacman -Qo'
 alias pmls='pacman -Ql'
 alias pmlo='pacman -Qdt'
 alias pmclean='sudo pacman -Rsn $(pacman -Qdtq)'
+alias packer='packer --noconfirm'
 
 # eclim
 if [[ -e ~/opt/eclipse/eclimd ]]; then

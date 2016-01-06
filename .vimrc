@@ -115,6 +115,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'vim-scripts/matchit.zip'
 " Plugin 'wellle/targets.vim'
+Plugin 'christoomey/vim-tmux-navigator'
 
 " Comment
 Plugin 'scrooloose/nerdcommenter'
@@ -259,10 +260,16 @@ nnoremap <Leader>sk :leftabove new<CR>
 nnoremap <Leader>sl :rightbelow vnew<CR>
 
 " navigation between split windows
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-h> <c-w>h
-nnoremap <c-l> <c-w>l
+" nnoremap <c-j> <c-w>j
+" nnoremap <c-k> <c-w>k
+" nnoremap <c-h> <c-w>h
+" nnoremap <c-l> <c-w>l
+let g:tmux_navigator_no_mappings = 1
+nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
+nnoremap <silent> <c-\> :TmuxNavigatePrevious<cr>
 
 " no more hightlight
 nnoremap <silent> <leader><Esc> :nohlsearch<CR><Esc>
