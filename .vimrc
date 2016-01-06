@@ -42,15 +42,9 @@ set expandtab     " expand tab to space
 set autoindent    " copy indent from last line
 set smartindent   " adjust indent after {, cinwords, }
 " set smarttab    " <BS> delete 4 space
-set tabstop=4     " tab size
-set softtabstop=4 " mix tab and space
-set shiftwidth=4  " indent size
-
-" autocmd FileType php setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
-autocmd FileType html setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
-autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
-autocmd FileType yaml setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
-autocmd FileType vim setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
+set tabstop=2     " tab size
+set softtabstop=2 " mix tab and space
+set shiftwidth=2  " indent size
 
 set wrap
 
@@ -81,6 +75,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tacahiroy/ctrlp-funky'
 Plugin 'ivalkeen/vim-ctrlp-tjump'
+Plugin 'JazzCore/ctrlp-cmatcher'
 " Plugin 'Shougo/unite.vim'
 " Plugin 'bling/vim-bufferline'
 Plugin 'szw/vim-ctrlspace'
@@ -89,7 +84,7 @@ Plugin 'szw/vim-ctrlspace'
 
 " Fast Moving
 Plugin 'Lokaltog/vim-easymotion'
-" Plugin 'terryma/vim-expand-region'
+Plugin 'terryma/vim-expand-region'
 
 " Code Completion
 Plugin 'Valloric/YouCompleteMe'
@@ -169,6 +164,11 @@ Plugin 'chase/vim-ansible-yaml'
 
 " languages
 Plugin 'pangloss/vim-javascript'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'yaymukund/vim-rabl'
+Plugin 'mxw/vim-jsx'
+Plugin 'mtscout6/vim-cjsx'
 
 "------------
 " Deprecated
@@ -226,8 +226,30 @@ colo Tomorrow-Night
 
 " basic
 let mapleader=","
+" let mapleader="\<Space>"
 nnoremap ; :
 inoremap jj <Esc>
+
+" delete and paste glitch
+" noremap <Leader>p  "0p
+" noremap <Leader>P  "0P
+" vnoremap <Leader>p "0p
+map <Leader>x  "_d
+map Y  "+y
+
+nnoremap <c-c>      :close<CR>
+nnoremap <c-t>      :tabnew<CR>
+nnoremap <c-x>      :tabclose<CR>
+
+nnoremap <c-right>  :tabnext<CR>
+nnoremap tj         :tabnext<CR>
+inoremap <c-right>  <ESC>:tabnext<CR>
+
+nnoremap <c-left>   :tabprevious<CR>
+nnoremap tk         :tabprevious<CR>
+inoremap <c-left>   <ESC>:tabprevious<CR>
+
+nnoremap tt         :tablast<CR>
 
 cnoremap vh vert bo h<space>
 
@@ -255,10 +277,14 @@ if executable('ag')
 endif
 
 " Ack
-nnoremap <leader>a :Ack<space>
+nnoremap <leader>a :Ack!<space>
 if executable('ag')
   let g:ackprg = 'ag --nogroup --nocolor --column'
 endif
+
+" expand-region
+map K <Plug>(expand_region_expand)
+" map J <Plug>(expand_region_shrink)
 
 " Emmet
 " let g:user_emmet_leader_key = '<c-y>'
@@ -273,8 +299,9 @@ let NERDTreeShowHidden=1
 let NERDTreeDirArrows=0
 let NERDChristmasTree=1
 let NERDTreeChDirMode=2
-let NERDTreeQuitOnOpen=1
-nnoremap <leader>d :NERDTreeToggle<cr>
+let NERDTreeQuitOnOpen=0
+nnoremap <leader>dd :NERDTreeToggle<cr>
+nnoremap <leader>df :NERDTreeFind<cr>
 
 " nerdcommenter
 let NERDSpaceDelims=1
@@ -285,6 +312,7 @@ let g:numbers_exclude = ['help', 'gitcommit', 'nerdtree']
 
 " fugitive
 nnoremap <Leader>gs :Gstatus<CR>
+nnoremap <Leader>gb :Gblame<CR>
 
 " GitGutter
 let g:gitgutter_enabled = 0
@@ -300,6 +328,7 @@ nnoremap <Leader>gr :GitGutterRevertHunk<CR>
 nnoremap <leader>] :TagbarToggle<CR>
 
 " ctrlp
+let g:ctrlp_match_func = {'match' : 'matcher#cmatch'}
 let g:ctrlp_extensions = ['buffertag', 'funky']
 let g:ctrlp_match_window = 'order:ttb,max:20'
 let g:ctrlp_show_hidden = 1
@@ -328,7 +357,7 @@ hi CtrlSpaceSearch   ctermfg=220  ctermbg=NONE cterm=bold
 hi CtrlSpaceStatus   ctermfg=230  ctermbg=234  cterm=NONE
 let g:ctrlspace_set_default_mapping=0
 let g:ctrlspace_search_timing=[30,30]
-let g:ctrlspace_unicode_font=0
+let g:ctrlspace_unicode_font=1
 let g:ctrlspace_use_ruby_bindings=1
 if executable("ag")
   let g:ctrlspace_glob_command = 'ag -l --nocolor -g "" --hidden'
@@ -383,6 +412,7 @@ let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '⚠'
 
 " indent guides
+let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_auto_colors = 0
 let g:indent_guides_guide_size = 1
 let g:indent_guides_start_level = 2
