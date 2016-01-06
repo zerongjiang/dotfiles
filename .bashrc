@@ -41,6 +41,21 @@ find_git_branch () {
     git_branch=''
 }
 
+find_ruby () {
+  if [ -f .ruby-version ]; then
+    local ruby=$(echo $MY_RUBY_HOME | awk -F'-' '{print $2}')
+    echo $ruby
+  fi
+}
+
+find_gemset () {
+  if [ -f .ruby-version ]; then
+    local gemset=$(echo $GEM_HOME | awk -F'@' '{print $2}')
+    [ "$gemset" != '' ] && gemset="@$gemset"
+    echo $gemset
+  fi
+}
+
 #--------------------+--+--+  +-+------------+
 # CL='\[\e[F;B;Cm\]' |FG|BG|  |C| Style      |
 #--------------------+--+--+  +-+------------+
@@ -56,7 +71,7 @@ find_git_branch () {
 #--------------------+--+--+
 
 # PS1="\n\[\e[0;36m\]┌─[\[\e[1;35m\]\u\[\e[1;34m\] @ \[\e[1;35m\]\h\[\e[0;36m\]]─[\[\e[1;34m\]\A\[\e[0;36m\]]─[\[\e[1;34m\]\w\[\e[0;36m\]]─[\[\e[0;31m\]\!\[\e[0;36m\]] \[\e[1;34m\$(find_git_branch)\]"
-PS1="\n\[\e[0;36m\]┌─[\[\e[1;35m\]\u\[\e[1;34m\] @ \[\e[1;35m\]\h\[\e[0;36m\]]─[\[\e[1;34m\]\A\[\e[0;36m\]]─[\[\e[1;33m\]\w\[\e[0;36m\]] \[\e[1;31m\$(find_git_branch)\]"
+PS1="\n\[\e[0;36m\]┌─[\[\e[1;35m\]\u\[\e[1;34m\] @ \[\e[1;35m\]禪\[\e[0;36m\]]─[\[\e[1;34m\]\A\[\e[0;36m\]]─[\[\e[1;33m\]\w\[\e[0;36m\]] \[\e[1;32m\$(find_git_branch)\] \[\e[1;31m\$(find_ruby)\]\[\e[1;31m\$(find_gemset)\] "
 # PS1="${PS1}\n\[\e[0;36m\]└─[\[\e[1;37m\]\$\[\e[0;36m\]] \[\e[0m\]"
 PS1="${PS1}\n\[\e[0;36m\]└─╼ \[\e[0m\]"
 
@@ -109,3 +124,8 @@ fi
 
 #nodejs
 # source <(npm completion)
+
+# brew
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
+fi
