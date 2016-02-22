@@ -58,6 +58,14 @@ link_git(){
 # mux
 link_mux(){
     linkdot .screenrc
+
+    if [ ! -e $HOME/.tmux/plugins/tpm ]; then
+      if [ -e $HOME/.tmux ]; then
+        mv $HOME/.tmux $HOME/.tmux.dotbak
+      fi
+      mkdir -p $HOME/.tmux/plugins
+    fi
+    linkdot .tmux/plugins/tpm
     linkdot .tmux.conf
     linkdot .tmux.reset.conf
 }
